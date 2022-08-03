@@ -12,7 +12,7 @@
     {
       "id": "2",
       "title": "Uncut Gems",
-      "genre":"Dark Comedy",
+      "genre": "Dark Comedy",
       "description": "From acclaimed filmmakers Josh and Benny Safdie comes an electrifying crime thriller about Howard Ratner (Adam Sandler), a charismatic New York City jeweler always on the lookout for the next big score. When he makes a series of high-stakes bets that could lead to the windfall of a lifetime, Howard must perform a precarious high-wire act, balancing business, family, and encroaching adversaries on all sides, in his relentless pursuit of the ultimate win.",
       "releaseDate": "2019",
       "filmImage": "https://d135u4jtzauizi.cloudfront.net/_thumbnail/UG_Online_Teaser-1-Sheet.jpg",
@@ -26,6 +26,13 @@
       "releaseDate": "2017",
       "filmImage": "https://d135u4jtzauizi.cloudfront.net/_thumbnail/TheFloridaProject_KeyArt_DigitalKeyArt_RGB-FIN_25.jpg",
       "watched": "Yes"
+    },
+    {
+      "title": "Hereditary ",
+      "genre": "Horror",
+      "filmImage": "https://d135u4jtzauizi.cloudfront.net/_thumbnail/HEREDITARY_TEASER_FINISH_V2_HALFSIZE.jpg",
+      "description": "When Ellen, the matriarch of the Graham family, passes away, her daughter's family begins to unravel cryptic and increasingly terrifying secrets about their ancestry. The more they discover, the more they find themselves trying to outrun the sinister fate they seem to have inherited. Making his feature debut, writer-director Ari Aster unleashes a nightmare vision of a domestic breakdown that exhibits the craft and precision of a nascent auteur, transforming a familial tragedy into something ominous and deeply disquieting, and pushing the horror movie into chilling new terrain with its shattering portrait of heritage gone to hell.",
+      "id": "7kaTR2g"
     }
   ]
 }
