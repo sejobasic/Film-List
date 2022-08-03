@@ -1,3 +1,4 @@
+
 .film-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -12,7 +13,7 @@
 
 .film-list .card {
   background-color: #fff;
-  color: #333;
+  color: var(--dark-grey);
   padding: 20px;
   border-radius: 4px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
@@ -25,7 +26,29 @@
 }
 
 .film-list .card h3 {
-  color: #555;
+  color: var(--medium-grey);
   margin-bottom: 6px;
+}
+
+.film-list .card p {
+  color: var(--light-grey);
+  font-size: 0.9em;
+}
+
+.film-list .card div {
+  color: var(--medium-grey);
+  font-size: 0.7em;
+  margin: 20px 0;
+  line-height: 1.5em;
+}
+
+.film-list .card a {
+  color: var(--medium-grey);
+  text-decoration: none;
+  display: block;
+  background: var(--secondary-bg-color);
+  font-size: 0.9em;
+  width: 120px;
+  text-align: center;
 }
 

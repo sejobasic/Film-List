@@ -7,7 +7,7 @@ function FilmList({ films }) {
   const renderFilms = films.map((film) => {
     return (
       <div className='card' key={film.id}>
-        <h2>{film.title}</h2>
+        <h3>{film.title}</h3>
         <p>{film.genre}</p>
         <img src={film.filmImage} alt='poster artwork of film' />
         <div className='film-description'>

@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600&display=swap');
 
+/* --------COLOR STYLE GUIDE-------- */
+:root {
+  --main-bg-color: #dfdfdf;
+  --secondary-bg-color: #e2e2e2;
+  --dark-grey: #333;
+  --medium-grey: #555;
+  --light-grey: #999;
+  --navbar-bg-color: #011627;
+}
+
 /* base styles */
 html, body, #root {
   height: 100%;
@@ -9,8 +19,8 @@ body {
   font-family: Archivo, sans-serif;
   margin: 0;
   font-size: 1.4em;
-  background: #dfdfdf;
-  color: #333;
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 h1,h2,h3,p {
@@ -18,7 +28,7 @@ h1,h2,h3,p {
 }
 
 input, textarea {
-  color: #333;
+  color: var(--main-text-color);
   padding: 8px;
   font-size: 1em;
   border-radius: 4px;
@@ -32,10 +42,16 @@ input, textarea {
 .page-title {
   text-align: center;
   margin: 40px auto;
-  color: #333;
+  color: var(--main-text-color);
 }
 
 .loading, .error {
   text-align: center;
   margin: 40px auto;
+}
+
+.loader-container {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
 }

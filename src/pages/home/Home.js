@@ -12,7 +12,9 @@ function Home() {
     <div className='home'>
       {error && <p className='error'>{error}</p>}
       {loading && (
-        <img className='loading' src={loader} alt='loading spinner' />
+        <div className='loader-container'>
+          <img className='loading' src={loader} alt='loading...' />
+        </div>
       )}
       {data && <FilmList films={data} />}
     </div>
