@@ -1,0 +1,28 @@
+.film {
+  max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.film h2 {
+  color: var(--medium-grey);
+  font-weight: 700;
+}
+
+.film p {
+  color: var(--light-grey);
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.film p:last-child {
+  color: var(--medium-grey);
+}
+
+.film img {
+  margin: 20px 0;
+  max-width: 30%;
+}

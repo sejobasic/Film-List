@@ -17,7 +17,14 @@ function Film() {
           <img className='loading' src={loader} alt='loading...' />
         </div>
       )}
-      {data && <h1>{data.title}</h1>}
+      {data && (
+        <>
+          <h2 className='page-title'>{data.title}</h2>
+          <p>{data.genre}</p>
+          <img src={data.filmImage} alt='poster artwork of film' />
+          <p>{data.description}</p>
+        </>
+      )}
     </div>
   )
 }

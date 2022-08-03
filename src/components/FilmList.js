@@ -13,7 +13,7 @@ function FilmList({ films }) {
         <div className='film-description'>
           {film.description.substring(0, 100)}...
         </div>
-        <Link to={`/films/${film.id}`}>Watch This</Link>
+        <Link to={`/films/${film.id}`}>More Info</Link>
       </div>
     )
   })
