@@ -41,8 +41,9 @@ input, textarea {
 
 .page-title {
   text-align: center;
-  margin: 5px auto;
-  color: var(--main-text-color);
+  margin: 10px auto;
+  color: var(--dark-grey);
+  font-weight: 500;
 }
 
 .loading, .error {

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 import './FilmList.css'
 
 function FilmList({ films }) {
+
+  if (films.length === 0) {
+    return <div className='error'>No Films Found</div>
+  }
   
   const renderFilms = films.map((film) => {
     return (
