@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import './Create.css'
 
@@ -8,12 +9,22 @@ function Create() {
   const [filmImage, setFilmImage] = useState('')
   const [description, setDescription] = useState('')
 
+  const history = useHistory()
+
   const { postData, data, error } = useFetch('http://localhost:3000/films', 'POST')
 
   function handleSubmit(e) {
     e.preventDefault()
     postData({title, genre, filmImage, description})
   }
+
+  // Redirect user when we get data response
+  useEffect(() => {
+    // if data is present redirect user
+    if (data) {
+      history.push('/')
+    }
+  }, [data])
 
   return (
     <div className='create'>

@@ -1,6 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './Navbar.css'
+import { Link } from 'react-router-dom'
+import SearchBar from './SearchBar'
+
 
 function Navbar() {
   return (
@@ -9,6 +11,7 @@ function Navbar() {
         <Link exact to='./' className='brand'>
           <h1>Film List</h1>
         </Link>
+        <SearchBar />
         <Link to='./create'>Add Film</Link>
       </nav>
     </div>

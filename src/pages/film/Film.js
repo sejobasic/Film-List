@@ -1,7 +1,7 @@
 import React from 'react'
-import './Film.css'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
+import './Film.css'
 import loader from '../../assets/loader.svg'
 
 function Film() {

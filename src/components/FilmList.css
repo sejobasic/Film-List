@@ -5,20 +5,23 @@
   grid-gap: 40px;
   max-width: 1200px;
   margin: 40px auto;
+  padding: 30px;
 }
 
 .card img {
-  max-width: 40%;
+  max-width: 80%;
+  align-items: center;
 }
 
 .film-list .card {
   background-color: #fff;
   color: var(--dark-grey);
-  padding: 20px;
+  padding: 25px;
   border-radius: 5px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   position: relative;
+  text-align: center;
 }
 
 .film-list .card:hover {
@@ -45,12 +48,11 @@
 .film-list .card a {
   color: var(--medium-grey);
   text-decoration: none;
-  display: block;
   background: var(--secondary-bg-color);
   font-size: 0.9em;
   border-radius: 5px;
-  padding: 5px;
-  width: 120px;
+  padding: 10px;
+  width: 200px;
   text-align: center;
 }
 

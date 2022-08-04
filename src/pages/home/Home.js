@@ -2,6 +2,7 @@ import React from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import './Home.css'
 
+
 import loader from '../../assets/loader.svg'
 import FilmList from '../../components/FilmList'
 
