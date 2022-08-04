@@ -13,7 +13,7 @@ function Navbar() {
   return (
     <div className='navbar' style={{ background: color}}>
       <nav>
-        <Link exact to='./' className='brand'>
+        <Link exact to='/' className='brand'>
           <h1>Film List</h1>
         </Link>
         <SearchBar />

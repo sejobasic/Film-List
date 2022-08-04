@@ -26,3 +26,13 @@
   margin: 20px 0;
   max-width: 30%;
 }
+
+/* dark mode */
+.film.dark {
+  background-color: var(--medium-grey);
+}
+
+.film.dark h2,
+.film.dark p {
+  color: #fff;
+}

@@ -3,14 +3,16 @@ import { useParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import './Film.css'
 import loader from '../../assets/loader.svg'
+import { useTheme } from '../../hooks/useTheme'
 
 function Film() {
   const { id } = useParams()
+  const { mode } = useTheme()
 
   const { data, loading, error } = useFetch(`http://localhost:3000/films/${id}`)
 
   return (
-    <div className='film'>
+    <div className={`film ${mode}`}>
       {error && <p className='error'>{error}</p>}
       {loading && (
         <div className='loader-container'>
