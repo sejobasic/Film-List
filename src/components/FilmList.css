@@ -18,13 +18,13 @@
   padding: 25px;
   border-radius: 5px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 1.5s ease;
   position: relative;
   text-align: center;
 }
 
 .film-list .card:hover {
-  transform: rotate(3deg);
+  transform: scale(1.05);
 }
 
 .film-list .card h3 {

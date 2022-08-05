@@ -12,6 +12,7 @@ function Home() {
   useEffect(() => {
     setLoading(true)
 
+    // get all documents from films collection
     projectFirestore.collection('films').get().then((snapshot) => {
       if (snapshot.empty) {
         setError('No Films Found')

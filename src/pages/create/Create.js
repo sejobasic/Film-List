@@ -11,7 +11,6 @@ function Create() {
 
   const history = useHistory()
 
-  const { postData, data, error } = useFetch('http://localhost:3000/films', 'POST')
 
   function handleSubmit(e) {
     e.preventDefault()
