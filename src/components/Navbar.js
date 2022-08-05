@@ -3,6 +3,7 @@ import './Navbar.css'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import { useTheme } from '../hooks/useTheme'
+import logo from '../assets/logo.png'
 
 
 
@@ -14,7 +15,7 @@ function Navbar() {
     <div className='navbar' style={{ background: color}}>
       <nav>
         <Link exact to='/' className='brand'>
-          <h1>Film List</h1>
+          <img src={logo} alt='Film List Logo' />
         </Link>
         <SearchBar />
         <Link to='./create'>Add Film</Link>

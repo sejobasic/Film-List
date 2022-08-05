@@ -11,6 +11,14 @@
   margin: 0 auto;
 }
 
+.navbar img {
+  width: 200px;
+}
+
+.navbar img:hover {
+  opacity: 0.9;
+}
+
 .navbar a.brand {
   margin-right: auto;
   color: #fff;
@@ -30,3 +38,4 @@
   background-color: #fff;
   color: #333;
 }
+
