@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { projectFirestore } from '../../firebase/config'
 import loader from '../../assets/loader.svg'
@@ -7,7 +7,7 @@ import './Film.css'
 
 function Film() {
   const { id } = useParams()
-  const { mode } = useTheme()
+  const { color, mode } = useTheme()
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -19,19 +19,22 @@ function Film() {
 
     // get single document by id from films collection
     // then method fires a func when the async task is completed and promise is resolved
-    projectFirestore.collection('films').doc(id).get().then((doc) => {
-      if (doc.exists) {
-        setLoading(false)
-        // update data state to be document data
-        // doc.data() is a func that grabs the data and becomes a JS obj
-        setData(doc.data())
-      } else {
-        setLoading(false)
-        setError('Could not find film')
-      }
-    })
-  }, [])
-
+    projectFirestore
+      .collection('films')
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setLoading(false)
+          // update data state to be document data
+          // doc.data() is a func that grabs the data and becomes a JS obj
+          setData(doc.data())
+        } else {
+          setLoading(false)
+          setError('Could not find film')
+        }
+      })
+  }, [id])
 
   return (
     <div className={`film ${mode}`}>
@@ -46,6 +49,7 @@ function Film() {
           <h2 className='page-title'>{data.title}</h2>
           <p>{data.genre}</p>
           <img src={data.filmImage} alt='poster artwork of film' />
+          <a style={{ background: color}} href={data.link} target='_blank' rel='noreferrer'>Watch Trailer</a>
           <p>{data.description}</p>
         </>
       )}

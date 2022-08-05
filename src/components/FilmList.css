@@ -59,6 +59,15 @@
   opacity: 0.8;
 }
 
+.delete-icon {
+  position: absolute;
+  width: 20px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  filter: invert(50%);
+}
+
 /* dark mode */
 
 .film-list .card.dark {
@@ -69,5 +78,9 @@
 .film-list .card.dark h3,
 .film-list .card.dark div {
   color: var(--secondary-bg-color)
+}
+
+.card.dark .delete-icon {
+  filter: invert(90%);
 }
 

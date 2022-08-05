@@ -1,10 +1,11 @@
 .film {
-  max-width: 1200px;
-  margin: 40px auto;
+  max-width: 1000px;
+  margin: 60px auto;
   text-align: center;
   background-color: #fff;
   padding: 40px;
   box-sizing: border-box;
+  transition: all 1.5s ease;
 }
 
 .film h2 {
@@ -40,4 +41,22 @@
 .film.dark h2,
 .film.dark p {
   color: #fff;
+}
+
+.film a {
+  display: block;
+  width: 150px;
+  font-size: 1em;
+  color: #fff;
+  padding:  10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--navbar-bg-color);
+  cursor: pointer;
+  text-decoration: none;
+  margin: 20px auto;
+}
+
+.film a:hover {
+  opacity: 0.8;
 }

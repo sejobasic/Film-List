@@ -1,32 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
+import { projectFirestore } from '../../firebase/config'
+import { useTheme } from '../../hooks/useTheme'
 import './Create.css'
 
 function Create() {
   const [title, setTitle] = useState('')
   const [genre, setGenre] = useState('')
   const [filmImage, setFilmImage] = useState('')
+  const [link, setLink] = useState('')
   const [description, setDescription] = useState('')
+
+  const { color, mode } = useTheme()
 
   const history = useHistory()
 
 
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    postData({title, genre, filmImage, description})
+    const doc = ({title, genre, filmImage, description})
+
+    // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
+
+    // fire catch block if error is found
+    try {
+      await projectFirestore.collection('films').add(doc)
+      // Redirect user to home when we get data response
+      history.push('/')
+    }  catch(err) {
+      console.log('error')
+    }
   }
 
-  // Redirect user when we get data response
-  useEffect(() => {
-    // if data is present redirect user
-    if (data) {
-      history.push('/')
-    }
-  }, [data])
-
   return (
-    <div className='create'>
+    <div className={`create ${mode}`}>
       <h2 className='page-title'>Add a New Film</h2>
 
       <form onSubmit={handleSubmit}>
@@ -58,6 +65,15 @@ function Create() {
           />
         </label>
         <label>
+          <span>Film Trailer URL:</span>
+          <input
+            type='text'
+            onChange={(e) => setLink(e.target.value)}
+            value={link}
+            required
+          />
+        </label>
+        <label>
           <span>Film Description:</span>
           <textarea
             onChange={(e) => setDescription(e.target.value)}
@@ -66,7 +82,7 @@ function Create() {
           />
         </label>
 
-        <button className='btn'>Submit</button>
+        <button className='btn' style={{ background: color}}>Submit</button>
       </form>
     </div>
   )

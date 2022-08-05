@@ -33,7 +33,7 @@ function ThemeSelector() {
           onClick={handleToggle}
           src={mode === 'light' ? modeIcon : modeIconFill} 
           alt='dark/light mode icon'
-          style={{ filter: mode === 'dark' ? 'invert(100%)' : ''}}
+          style={{ filter: mode === 'dark' ? 'invert(100%)' : 'invert(30%)'}}
         />
       </div>
 
