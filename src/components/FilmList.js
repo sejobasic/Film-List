@@ -12,6 +12,7 @@ function FilmList({ films }) {
     return <div className='error'>No Films Found</div>
   }
 
+  // Delete document from database
   const handleDelete = (id) => {
     projectFirestore.collection('films').doc(id).delete()
   }
