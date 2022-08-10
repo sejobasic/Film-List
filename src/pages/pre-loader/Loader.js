@@ -9,7 +9,7 @@ function Loader() {
 
   setTimeout(() => {
     setShowLoader(false)
-  }, 4000)
+  }, 3000)
 
   const loaderVariant = {
     hidden: {
@@ -27,7 +27,7 @@ function Loader() {
   const logoVariant = {
     hidden: {
       opacity: 0,
-      x: '-100vw'
+      x: '-100vw',
     },
     visible: {
       opacity: 1,
@@ -42,7 +42,7 @@ function Loader() {
   const preloaderVariant = {
     hidden: {
       opacity: 0,
-      x: '100vw'
+      x: '100vw',
     },
     visible: {
       opacity: 1,
@@ -54,37 +54,35 @@ function Loader() {
     },
   }
 
-
   return (
     <AnimatePresence>
       {showLoader && (
-      <motion.div 
-        className='preloader-container'
-        variants={loaderVariant}
-        initial='hidden'
-        animate='visible'
-        exit={{opacity: 0}}
-
-      >
-        <motion.img
-          variants={logoVariant}
+        <motion.div
+          className='preloader-container'
+          variants={loaderVariant}
           initial='hidden'
           animate='visible'
-          className='loader-logo' 
-          src={logo} 
-          alt='site branding' 
-          exit={{y: -1000}}
-        />
-        <motion.img
-        variants={preloaderVariant}
-        initial='hidden'
-        animate='visible'
-        className='preloader'
-        src={preloader}
-        alt='loader icon'
-        exit={{y: 1000}}
-        />
-      </motion.div>
+          exit={{ opacity: 0 }}
+        >
+          <motion.img
+            variants={logoVariant}
+            initial='hidden'
+            animate='visible'
+            className='loader-logo'
+            src={logo}
+            alt='site branding'
+            exit={{ y: -1000 }}
+          />
+          <motion.img
+            variants={preloaderVariant}
+            initial='hidden'
+            animate='visible'
+            className='preloader'
+            src={preloader}
+            alt='loader icon'
+            exit={{ y: 1000 }}
+          />
+        </motion.div>
       )}
     </AnimatePresence>
   )

@@ -12,7 +12,6 @@ import ThemeSelector from './components/ThemeSelector'
 import { useTheme } from './hooks/useTheme'
 import Loader from './pages/pre-loader/Loader'
 
-
 function App() {
   const [loading, setLoading] = useState(false)
   const { mode } = useTheme()
@@ -25,8 +24,8 @@ function App() {
     visible: {
       opacity: 1,
       transition: {
-        delay: 0.5,
-        duration: 2,
+        delay: 0.2,
+        duration: 1,
       },
     },
   }
@@ -36,41 +35,43 @@ function App() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 6000)
+    }, 4000)
   }, [])
 
   return (
     <>
-    <AnimatePresence>
-      {loading ? (<Loader />) : (
-        <motion.div
-          className={`App ${mode}`}
-          variants={appVariant}
-          initial='hidden'
-          animate='visible'
-        >
-          <BrowserRouter>
-            <Navbar />
-            <ThemeSelector />
-            <Switch>
-              <Route exact path='/'>
-                <Home />
-              </Route>
-              <Route exact path='/search'>
-                <Search />
-              </Route>
-              <Route exact path='/create'>
-                <Create />
-              </Route>
-              <Route exact path='/edit/:id'>
-                <Create />
-              </Route>
-              <Route exact path='/films/:id'>
-                <Film />
-              </Route>
-            </Switch>
-          </BrowserRouter>
-        </motion.div>
+      <AnimatePresence>
+        {loading ? (
+          <Loader />
+        ) : (
+          <motion.div
+            className={`App ${mode}`}
+            variants={appVariant}
+            initial='hidden'
+            animate='visible'
+          >
+            <BrowserRouter>
+              <Navbar />
+              <ThemeSelector />
+              <Switch>
+                <Route exact path='/'>
+                  <Home />
+                </Route>
+                <Route exact path='/search'>
+                  <Search />
+                </Route>
+                <Route exact path='/create'>
+                  <Create />
+                </Route>
+                <Route exact path='/edit/:id'>
+                  <Create />
+                </Route>
+                <Route exact path='/films/:id'>
+                  <Film />
+                </Route>
+              </Switch>
+            </BrowserRouter>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

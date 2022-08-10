@@ -45,20 +45,6 @@ function Film() {
   //   })
   // }
 
-  // animate functions for film box
-  const filmVariant = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        delay: 0.5,
-        duration: 2,
-      },
-    },
-  }
-
   return (
     <div className={`film ${mode}`}>
       {error && <p className='error'>{error}</p>}
