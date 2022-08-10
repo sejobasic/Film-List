@@ -84,3 +84,34 @@
   filter: invert(90%);
 }
 
+
+.add-alert-container, .delete-alert-container, .update-alert-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-alert {
+  background-color: var(--navbar-bg-color);
+}
+
+.add-alert, .update-alert {
+  background-color: var(--navbar-bg-color);
+}
+
+.delete-alert, .add-alert, .update-alert{
+  visibility: hidden;
+  color: #e4e4e4;
+  padding: 20px 40px;
+}
+
+.delete-alert.show, .add-alert.show, .update-alert.show{
+  visibility: visible;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  cursor: pointer;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
 import './Navbar.css'
-import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import { Link } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
+import { motion } from 'framer-motion/dist/framer-motion'
 import logo from '../assets/logo.png'
 
 
@@ -10,9 +11,11 @@ import logo from '../assets/logo.png'
 function Navbar() {
   const { color } = useTheme()
 
-
   return (
-    <div className='navbar' style={{ background: color}}>
+    <motion.div 
+      className='navbar' 
+      style={{ background: color}}
+    >
       <nav>
         <Link exact to='/' className='brand'>
           <img src={logo} alt='Film List Logo' />
@@ -20,7 +23,7 @@ function Navbar() {
         <SearchBar />
         <Link exact to='/create'>Add Film</Link>
       </nav>
-    </div>
+    </motion.div>
   )
 }
 

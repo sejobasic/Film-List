@@ -9,7 +9,6 @@ function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault()
-
     history.push(`/search?q=${term}`)
   }
 
@@ -20,6 +19,7 @@ function SearchBar() {
         <input 
           type='text'
           id='search'
+          placeholder='By Film Title'
           onChange={(e) => setTerm(e.target.value)}
           required
         />

@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-
+import { motion } from 'framer-motion/dist/framer-motion';
 // Page Components
 import Navbar from './components/Navbar';
 import Home from './pages/home/Home';
@@ -14,8 +14,28 @@ import { useTheme } from './hooks/useTheme'
 function App() {
   const { mode } = useTheme()
 
+  // animate functions for navbar component
+  const appVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: { 
+        delay: 0.5,
+        duration: 4
+      }
+    }
+  }
+  
+
   return (
-    <div className={`App ${mode}`}>
+    <motion.div 
+      className={`App ${mode}`}
+      variants={appVariant}
+      initial='hidden'
+      animate='visible'
+    >
       <BrowserRouter>
         <Navbar />
         <ThemeSelector />
@@ -23,18 +43,21 @@ function App() {
           <Route exact path='/' >
             <Home />
           </Route>
-          <Route path='/search'>
+          <Route exact path='/search'>
             <Search />
           </Route>
-          <Route path='/create'>
+          <Route exact path='/create'>
             <Create />
           </Route>
-          <Route path='/films/:id' >
+          <Route exact path="/edit/:id">
+            <Create />
+          </Route>
+          <Route exact path='/films/:id' >
             <Film />
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
+    </motion.div>
   );
 }
 

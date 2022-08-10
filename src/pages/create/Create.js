@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { projectFirestore } from '../../firebase/config'
+import { dataBase } from '../../firebase/config'
 import { useTheme } from '../../hooks/useTheme'
+import { motion } from 'framer-motion/dist/framer-motion'
 import './Create.css'
 
 function Create() {
@@ -24,7 +25,7 @@ function Create() {
 
     // fire catch block if error is found
     try {
-      await projectFirestore.collection('films').add(doc)
+      await dataBase.collection('films').add(doc)
       // Redirect user to home when we get data response
       history.push('/')
     }  catch(err) {
@@ -32,8 +33,30 @@ function Create() {
     }
   }
 
+  // animate functions for form component
+  const formVariant = {
+    hidden: {
+      opacity: 0,
+      y: '-100vh'
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        delay: 0.5,
+        duration: 1
+      }
+    }
+  }
+
   return (
-    <div className={`create ${mode}`}>
+    <motion.div 
+      className={`create ${mode}`}
+      variants={formVariant}
+      initial='hidden'
+      animate='visible'
+    >
       <h2 className='page-title'>Add a New Film</h2>
 
       <form onSubmit={handleSubmit}>
@@ -84,7 +107,7 @@ function Create() {
 
         <button className='btn' style={{ background: color}}>Submit</button>
       </form>
-    </div>
+    </motion.div>
   )
 }
 

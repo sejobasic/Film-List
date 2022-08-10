@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { projectFirestore } from '../../firebase/config'
+import { useParams, useHistory } from 'react-router-dom'
+import { dataBase } from '../../firebase/config'
 import loader from '../../assets/loader.svg'
 import { useTheme } from '../../hooks/useTheme'
+import editIcon from '../../assets/edit-icon.svg'
 import './Film.css'
 
 function Film() {
   const { id } = useParams()
   const { color, mode } = useTheme()
+  const history = useHistory();
 
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -16,25 +18,34 @@ function Film() {
   // fetch data from firebase
   useEffect(() => {
     setLoading(true)
+    const filmsCollection = dataBase.collection('films');
+    const documentReference = filmsCollection.doc(id);
 
     // get single document by id from films collection
     // then method fires a func when the async task is completed and promise is resolved
-    projectFirestore
-      .collection('films')
-      .doc(id)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
+    const unsub = documentReference.onSnapshot((snapshot) => {
+        if (snapshot.exists) {
           setLoading(false)
           // update data state to be document data
           // doc.data() is a func that grabs the data and becomes a JS obj
-          setData(doc.data())
+          setData(snapshot.data())
+          setError(false)
         } else {
           setLoading(false)
           setError('Could not find film')
         }
       })
+
+      // cleanup func for when component unmounts
+      return () => unsub()
   }, [id])
+
+  // Update single document in collection
+  // const handleUpdate = () => {
+  //   projectFirestore.collection('films').doc(id).update({
+  //     title: 
+  //   })
+  // }
 
   return (
     <div className={`film ${mode}`}>
@@ -51,6 +62,12 @@ function Film() {
           <img src={data.filmImage} alt='poster artwork of film' />
           <a style={{ background: color}} href={data.link} target='_blank' rel='noreferrer'>Watch Trailer</a>
           <p>{data.description}</p>
+          <img 
+          className='edit-icon' 
+          onClick={() => history.push(`/edit/${id}`)}
+          src={editIcon} 
+          alt='edit icon' 
+        />
         </>
       )}
     </div>

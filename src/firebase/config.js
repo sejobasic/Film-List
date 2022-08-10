@@ -14,7 +14,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 //init firestore services
-const projectFirestore = firebase.firestore()
+const dataBase = firebase.firestore()
 
 // export anything we will use
-export { projectFirestore }
+export { dataBase }
