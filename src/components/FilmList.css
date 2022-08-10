@@ -66,6 +66,7 @@
   right: 10px;
   cursor: pointer;
   filter: invert(50%);
+  transition: 1s ease;
 }
 
 /* dark mode */
@@ -80,11 +81,12 @@
   color: var(--secondary-bg-color)
 }
 
-.card.dark .delete-icon {
+.card.dark .delete-icon,
+.card.dark .edit-icon {
   filter: invert(90%);
 }
 
-
+/* Alert boxes */
 .add-alert-container, .delete-alert-container, .update-alert-container {
   display: flex;
   align-items: center;
@@ -103,6 +105,7 @@
   visibility: hidden;
   color: #e4e4e4;
   padding: 20px 40px;
+  border-radius: 5px;
 }
 
 .delete-alert.show, .add-alert.show, .update-alert.show{
@@ -111,7 +114,15 @@
 
 .edit-icon {
   position: absolute;
+  width: 20px;
   top: 10px;
-  right: 50px;
+  left: 10px;
   cursor: pointer;
+  filter: invert(50%);
+  transition: 1s ease;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+  transform: scale(1.2);
 }

@@ -103,9 +103,8 @@ function Create() {
       initial='hidden'
       animate='visible'
     >
-      <h2 
-        className='page-title'
-      >{action === 'create' ? 'Add Film' : 'Update Film'}
+      <h2 className='page-title'>
+        {action === 'create' ? 'Add Film' : 'Update Film'}
       </h2>
 
       <form onSubmit={handleSubmit}>
@@ -160,7 +159,7 @@ function Create() {
         </label>
 
         <button className='btn' style={{ background: color }}>
-        {action === 'create' ? 'Submit' : 'Update'}
+          {action === 'create' ? 'Submit' : 'Update'}
         </button>
       </form>
     </motion.div>

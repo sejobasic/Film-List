@@ -4,7 +4,7 @@ import './SearchBar.css'
 
 function SearchBar() {
   const [term, setTerm] = useState('')
-  
+
   const history = useHistory()
 
   function handleSubmit(e) {
@@ -16,7 +16,7 @@ function SearchBar() {
     <div className='searchbar'>
       <form onChange={handleSubmit}>
         <label htmlFor='search'>Search:</label>
-        <input 
+        <input
           type='text'
           id='search'
           placeholder='By Film Title'

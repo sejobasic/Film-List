@@ -31,9 +31,9 @@ function ThemeSelector() {
       <div className='mode-toggle'>
         <img
           onClick={handleToggle}
-          src={mode === 'light' ? modeIcon : modeIconFill} 
+          src={mode === 'light' ? modeIcon : modeIconFill}
           alt='dark/light mode icon'
-          style={{ filter: mode === 'dark' ? 'invert(100%)' : 'invert(30%)'}}
+          style={{ filter: mode === 'dark' ? 'invert(100%)' : 'invert(30%)' }}
         />
       </div>
 
