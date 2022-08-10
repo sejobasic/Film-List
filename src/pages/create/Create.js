@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
 import { dataBase } from '../../firebase/config'
 import { useTheme } from '../../hooks/useTheme'
 import { motion } from 'framer-motion/dist/framer-motion'
@@ -11,25 +11,71 @@ function Create() {
   const [filmImage, setFilmImage] = useState('')
   const [link, setLink] = useState('')
   const [description, setDescription] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const { color, mode } = useTheme()
 
+  //Query Parameters
   const history = useHistory()
+  const queryString = useLocation().search
+  const queryParams = new URLSearchParams(queryString)
+  const action = queryParams.get('action')
 
+  //Route parameters
+  const params = useParams()
+  const id = params.id
+
+  // Update individual film
+  useEffect(() => {
+    if (!action) {
+      const docRef = dataBase.collection('films').doc(id)
+      docRef.get().then((document) => {
+        const data = document.data()
+        setTitle(data.title)
+        setGenre(data.genre)
+        setFilmImage(data.filmImage)
+        setLink(data.link)
+        setDescription(data.description)
+      })
+    } else {
+      setTitle('')
+      setGenre('')
+      setFilmImage('')
+      setLink('')
+      setDescription('')
+    }
+  }, [action, id])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const doc = ({title, genre, filmImage, description})
+    setIsSubmitted(true)
+    const filmToAddOrUpdate = { title, genre, filmImage, link, description }
 
-    // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
-
-    // fire catch block if error is found
-    try {
-      await dataBase.collection('films').add(doc)
-      // Redirect user to home when we get data response
-      history.push('/')
-    }  catch(err) {
-      console.log('error')
+    if (action === 'create') {
+      // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
+      try {
+        await dataBase.collection('films').add(filmToAddOrUpdate)
+        setIsSubmitted(false)
+        history.push({
+          pathname: '/',
+          state: { addedFilm: filmToAddOrUpdate },
+        })
+        // fire catch block if error is found
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      try {
+        await dataBase.collection('films').doc(id).update(filmToAddOrUpdate)
+        setIsSubmitted(false)
+        // Redirect user to home when we get data response
+        history.push({
+          pathname: '/',
+          state: { updatedFilm: filmToAddOrUpdate },
+        })
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 
@@ -37,7 +83,7 @@ function Create() {
   const formVariant = {
     hidden: {
       opacity: 0,
-      y: '-100vh'
+      y: '-100vh',
     },
     visible: {
       opacity: 1,
@@ -45,29 +91,33 @@ function Create() {
       transition: {
         type: 'spring',
         delay: 0.5,
-        duration: 1
-      }
-    }
+        duration: 1,
+      },
+    },
   }
 
   return (
-    <motion.div 
+    <motion.div
       className={`create ${mode}`}
       variants={formVariant}
       initial='hidden'
       animate='visible'
     >
-      <h2 className='page-title'>Add a New Film</h2>
+      <h2 
+        className='page-title'
+      >{action === 'create' ? 'Add Film' : 'Update Film'}
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <label>
           <span>Film Title:</span>
-          <input 
+          <input
             type='text'
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             required
-            />
+            disabled={action !== 'create' && !title}
+          />
         </label>
         <label>
           <span>Film Genre:</span>
@@ -75,7 +125,8 @@ function Create() {
             type='text'
             onChange={(e) => setGenre(e.target.value)}
             value={genre}
-            required 
+            required
+            disabled={action !== 'create' && !genre}
           />
         </label>
         <label>
@@ -85,6 +136,7 @@ function Create() {
             onChange={(e) => setFilmImage(e.target.value)}
             value={filmImage}
             required
+            disabled={action !== 'create' && !filmImage}
           />
         </label>
         <label>
@@ -94,6 +146,7 @@ function Create() {
             onChange={(e) => setLink(e.target.value)}
             value={link}
             required
+            disabled={action !== 'create' && !link}
           />
         </label>
         <label>
@@ -102,10 +155,13 @@ function Create() {
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             required
+            disabled={action !== 'create' && !description}
           />
         </label>
 
-        <button className='btn' style={{ background: color}}>Submit</button>
+        <button className='btn' style={{ background: color }}>
+        {action === 'create' ? 'Submit' : 'Update'}
+        </button>
       </form>
     </motion.div>
   )

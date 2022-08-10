@@ -21,7 +21,7 @@ function Navbar() {
           <img src={logo} alt='Film List Logo' />
         </Link>
         <SearchBar />
-        <Link exact to='/create'>Add Film</Link>
+        <Link to="/create?action=create">Add Film</Link>
       </nav>
     </motion.div>
   )

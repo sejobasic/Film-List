@@ -92,11 +92,11 @@
 }
 
 .delete-alert {
-  background-color: var(--navbar-bg-color);
+  background-color: rgb(183, 2, 51);
 }
 
 .add-alert, .update-alert {
-  background-color: var(--navbar-bg-color);
+  background-color: rgb(36, 156, 107);
 }
 
 .delete-alert, .add-alert, .update-alert{

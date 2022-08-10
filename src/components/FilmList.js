@@ -31,7 +31,7 @@ function FilmList({ films, isDeleted }) {
   }, [location])
 
   if (films.length === 0) {
-    return <div className='error'>No Films Found</div>
+    return <div className={`error ${mode}`}>No Films Found</div>
   }
 
   // Delete document from database

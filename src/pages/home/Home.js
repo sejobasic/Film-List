@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { dataBase } from '../../firebase/config'
 import loader from '../../assets/loader.svg'
 import FilmList from '../../components/FilmList'
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../hooks/useTheme'
 import './Home.css'
 
 function Home() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
-  const[deletedFilm, setDeletedFilm] = useState(false);
+  const [deletedFilm, setDeletedFilm] = useState(false)
 
-  const {mode} = useTheme();
+  const { mode } = useTheme()
 
   useEffect(() => {
     setLoading(true)
@@ -19,18 +19,19 @@ function Home() {
     // get all documents from films collection
     // onSnapshot sends us current state of collection, it is used for real time collection data
     // When deleting an item the snapshot fires up again and goes through all documents and updates local state to match those current docs which would not include the deleted doc
-    const unsub = dataBase.collection('films').onSnapshot((snapshot) => {
+    const unsub = dataBase.collection('films').onSnapshot(
+      (snapshot) => {
         if (snapshot.empty) {
           setError('No Films Found')
           setLoading(false)
         } else {
-          if(snapshot.docChanges()[0]._delegate.type === 'removed') {
-            setDeletedFilm(true);
+          if (snapshot.docChanges()[0]._delegate.type === 'removed') {
+            setDeletedFilm(true)
             setTimeout(() => {
-                setDeletedFilm(false)
+              setDeletedFilm(false)
             }, 3000)
           } else {
-              setDeletedFilm(false);
+            setDeletedFilm(false)
           }
           let results = []
           // log each individual document
@@ -41,19 +42,19 @@ function Home() {
           })
           // update local data to be results which will be an array of objs of each film
           setData(results)
-          setError(false);
+          setError(false)
           setLoading(false)
         }
-      }, (err) => {
-          setError(err.message)
-          setLoading(false)
-        })
+      },
+      (err) => {
+        setError(err.message)
+        setLoading(false)
+      }
+    )
 
-        // cleanup func fires automatically when the component un-mounts(when going to diff page)
-        // now if something changes in the collection this func will not run and update state due to cleanup
-        return () => unsub()
-
-
+    // cleanup func fires automatically when the component un-mounts(when going to diff page)
+    // now if something changes in the collection this func will not run and update state due to cleanup
+    return () => unsub()
   }, [])
 
   return (
