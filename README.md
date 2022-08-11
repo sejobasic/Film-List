@@ -15,11 +15,20 @@
 
 - React
 - React Router
+- Context API
 - Firebase
 - CSS
 - Framer Motion
 - Netlify
 - Adobe Photoshop
+
+## Hooks Used
+- useState
+- useEffect
+- useRef
+- useHistory
+- useParams
+- useLocation
 
 
 
