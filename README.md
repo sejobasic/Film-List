@@ -18,6 +18,7 @@
 - Firebase
 - CSS
 - Framer Motion
+- Netlify
 - Adobe Photoshop
 
 
