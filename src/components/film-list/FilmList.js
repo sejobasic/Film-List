@@ -86,56 +86,54 @@ function FilmList({ films, isDeleted }) {
   const renderFilms = films.map((film, i) => {
     return (
       <AnimatePresence key={film.id}>
-        <div className='cardContainer'>
-          <motion.div
-            variants={{
-              hidden: (i) => ({
-                opacity: 0,
-              }),
-              visible: (i) => ({
-                opacity: 1,
-                transition: {
-                  delay: i * 0.2,
-                },
-              }),
-              removed: {
-                opacity: 0,
-                transition: {
-                  delay: i * 0.2,
-                },
+        <motion.div
+          variants={{
+            hidden: (i) => ({
+              opacity: 0,
+            }),
+            visible: (i) => ({
+              opacity: 1,
+              transition: {
+                delay: i * 0.2,
               },
-            }}
-            initial={hasRenderedFilms.current ? 'visible' : 'hidden'}
-            animate='visible'
-            exit='removed'
-            custom={i}
-            className={`card ${mode}`}
-            key={film.id}
-          >
+            }),
+            removed: {
+              opacity: 0,
+              transition: {
+                delay: i * 0.2,
+              },
+            },
+          }}
+          initial={hasRenderedFilms.current ? 'visible' : 'hidden'}
+          animate='visible'
+          exit='removed'
+          custom={i}
+          className={`card ${mode}`}
+          key={film.id}
+        >
 
-            <img src={film.filmImage} alt='poster artwork of film' />
-            <h3>{film.title}</h3>
-            <p>{film.genre}</p>
-            <div className='film-description'>
-              {film.description.substring(0, 100)}...
-            </div>
-            <Link style={{ background: color }} to={`/films/${film.id}`}>
-              More Info
-            </Link>
-            <img
-              className='delete-icon'
-              onClick={() => handleDelete(film.id)}
-              src={deleteIcon}
-              alt='delete icon'
-            />
-            <img
-              className='edit-icon'
-              src={editIcon}
-              alt='Edit icon'
-              onClick={() => history.push(`/edit/${film.id}`)}
-            />
-          </motion.div>
-        </div>
+          <img src={film.filmImage} alt='poster artwork of film' />
+          <h3>{film.title}</h3>
+          <p>{film.genre}</p>
+          <div className='film-description'>
+            {film.description.substring(0, 100)}...
+          </div>
+          <Link style={{ background: color }} to={`/films/${film.id}`}>
+            More Info
+          </Link>
+          <img
+            className='delete-icon'
+            onClick={() => handleDelete(film.id)}
+            src={deleteIcon}
+            alt='delete icon'
+          />
+          <img
+            className='edit-icon'
+            src={editIcon}
+            alt='Edit icon'
+            onClick={() => history.push(`/edit/${film.id}`)}
+          />
+        </motion.div>
       </AnimatePresence>
     )
   })

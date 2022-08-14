@@ -29,7 +29,6 @@ function SearchBar() {
           type='text'
           id='search'
           placeholder='By Film Title'
-          onChange={(e) => handleSubmit}
           required
         />
       </form>
