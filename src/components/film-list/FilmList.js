@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { useTheme } from '../hooks/useTheme'
-import { dataBase } from '../firebase/config'
+import { useTheme } from '../../hooks/useTheme'
+import { dataBase } from '../../firebase/config'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
-import deleteIcon from '../assets/delete-icon.svg'
-import editIcon from '../assets/edit-icon.svg'
+import deleteIcon from '../../assets/delete-icon.svg'
+import editIcon from '../../assets/edit-icon.svg'
 import './FilmList.css'
 
 function FilmList({ films, isDeleted }) {

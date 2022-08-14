@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { dataBase } from '../../firebase/config'
 import loader from '../../assets/loader.svg'
-import FilmList from '../../components/FilmList'
+import FilmList from '../../components/film-list/FilmList'
 import { useTheme } from '../../hooks/useTheme'
 import './Home.css'
 

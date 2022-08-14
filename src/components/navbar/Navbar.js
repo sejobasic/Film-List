@@ -1,9 +1,9 @@
 import React from 'react'
 import './Navbar.css'
-import SearchBar from './SearchBar'
+import SearchBar from '../search-bar/SearchBar'
 import { Link } from 'react-router-dom'
-import { useTheme } from '../hooks/useTheme'
-import logo from '../assets/logo.png'
+import { useTheme } from '../../hooks/useTheme'
+import logo from '../../assets/logo.png'
 
 function Navbar() {
   const { color } = useTheme()
