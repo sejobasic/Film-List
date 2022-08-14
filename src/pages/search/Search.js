@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
-import FilmList from '../../components/FilmList'
+import FilmList from '../../components/film-list/FilmList'
 import './Search.css'
 
 //Firestore

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { useTheme } from '../hooks/useTheme'
-import { dataBase } from '../firebase/config'
+import { useTheme } from '../../hooks/useTheme'
+import { dataBase } from '../../firebase/config'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
-import deleteIcon from '../assets/delete-icon.svg'
-import editIcon from '../assets/edit-icon.svg'
+import deleteIcon from '../../assets/delete-icon.svg'
+import editIcon from '../../assets/edit-icon.svg'
 import './FilmList.css'
 
 function FilmList({ films, isDeleted }) {
@@ -85,54 +85,57 @@ function FilmList({ films, isDeleted }) {
 
   const renderFilms = films.map((film, i) => {
     return (
-      <AnimatePresence>
-        <motion.div
-          variants={{
-            hidden: (i) => ({
-              opacity: 0,
-            }),
-            visible: (i) => ({
-              opacity: 1,
-              transition: {
-                delay: i * 0.2,
+      <AnimatePresence key={film.id}>
+        <div className='cardContainer'>
+          <motion.div
+            variants={{
+              hidden: (i) => ({
+                opacity: 0,
+              }),
+              visible: (i) => ({
+                opacity: 1,
+                transition: {
+                  delay: i * 0.2,
+                },
+              }),
+              removed: {
+                opacity: 0,
+                transition: {
+                  delay: i * 0.2,
+                },
               },
-            }),
-            removed: {
-              opacity: 0,
-              transition: {
-                delay: i * 0.2,
-              },
-            },
-          }}
-          initial={hasRenderedFilms.current ? 'visible' : 'hidden'}
-          animate='visible'
-          exit='removed'
-          custom={i}
-          className={`card ${mode}`}
-          key={film.id}
-        >
-          <img src={film.filmImage} alt='poster artwork of film' />
-          <h3>{film.title}</h3>
-          <p>{film.genre}</p>
-          <div className='film-description'>
-            {film.description.substring(0, 100)}...
-          </div>
-          <Link style={{ background: color }} to={`/films/${film.id}`}>
-            More Info
-          </Link>
-          <img
-            className='delete-icon'
-            onClick={() => handleDelete(film.id)}
-            src={deleteIcon}
-            alt='delete icon'
-          />
-          <img
-            className='edit-icon'
-            src={editIcon}
-            alt='Edit icon'
-            onClick={() => history.push(`/edit/${film.id}`)}
-          />
-        </motion.div>
+            }}
+            initial={hasRenderedFilms.current ? 'visible' : 'hidden'}
+            animate='visible'
+            exit='removed'
+            custom={i}
+            className={`card ${mode}`}
+            key={film.id}
+          >
+
+            <img src={film.filmImage} alt='poster artwork of film' />
+            <h3>{film.title}</h3>
+            <p>{film.genre}</p>
+            <div className='film-description'>
+              {film.description.substring(0, 100)}...
+            </div>
+            <Link style={{ background: color }} to={`/films/${film.id}`}>
+              More Info
+            </Link>
+            <img
+              className='delete-icon'
+              onClick={() => handleDelete(film.id)}
+              src={deleteIcon}
+              alt='delete icon'
+            />
+            <img
+              className='edit-icon'
+              src={editIcon}
+              alt='Edit icon'
+              onClick={() => history.push(`/edit/${film.id}`)}
+            />
+          </motion.div>
+        </div>
       </AnimatePresence>
     )
   })
@@ -174,9 +177,9 @@ function FilmList({ films, isDeleted }) {
 
       <motion.div
         className='film-list'
-        // variants={cardVariant}
-        // initial='hidden'
-        // animate='visible'
+      // variants={cardVariant}
+      // initial='hidden'
+      // animate='visible'
       >
         {renderFilms}
       </motion.div>
