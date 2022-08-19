@@ -1,6 +1,6 @@
 # 🎥 Film List 🎥
 
-[LINK TO APPLICATION](https://inquisitive-crumble-d375e6.netlify.app/)
+[LINK TO APPLICATION](https://filmlist-project.netlify.app/)
 
 
 ## Description
