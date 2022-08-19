@@ -8,6 +8,7 @@ import Home from './pages/home/Home'
 import Search from './pages/search/Search'
 import Create from './pages/create/Create'
 import Film from './pages/film/Film'
+import Login from './pages/login/Login'
 import ThemeSelector from './components/theme-selector/ThemeSelector'
 import { useTheme } from './hooks/useTheme'
 import Loader from './pages/pre-loader/Loader'
@@ -51,6 +52,7 @@ function App() {
             animate='visible'
           >
             <BrowserRouter>
+              <Login />
               <Navbar />
               <ThemeSelector />
               <Switch>

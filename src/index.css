@@ -10,7 +10,9 @@
   --navbar-bg-color: #3d405b;
 }
 
-/* base styles */
+
+/* GLOBAL STYLES */
+
 html, body, #root {
   height: 100%;
 }
@@ -62,4 +64,22 @@ input, textarea {
 .loading.dark, 
 .error.dark {
   color: #e4e4e4;
+}
+
+.btn {
+  background: none;
+  cursor: pointer;
+  border: 2px solid var(--navbar-bg-color);
+  color: var(--navbar-bg-color);
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+}
+
+.btn:hover {
+  background: var(--navbar-bg-color);
+  color: #fff;
 }
