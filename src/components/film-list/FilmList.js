@@ -52,23 +52,6 @@ function FilmList({ films, isDeleted }) {
     await docToDelete.delete()
   }
 
-  // animate functions for card component
-  // const cardVariant = {
-  //   hidden: {
-  //     opacity: 0,
-  //     y: '-100vh',
-  //   },
-  //   visible: {
-  //     opacity: 1,
-  //     y: 0,
-  //     transition: {
-  //       type: 'spring',
-  //       delay: 0.5,
-  //       duration: 1,
-  //     },
-  //   },
-  // }
-
   // animate functions for alert boxes
   const alertVariant = {
     hidden: {
