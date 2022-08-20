@@ -26,3 +26,8 @@
   font-size: 1em;
   width: 100%;
 }
+
+.disabled,
+.disabled:hover {
+  opacity: 0.5;
+}

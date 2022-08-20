@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
+import { useSignup } from '../../hooks/useSignup'
 import './Signup.css'
 
 function Signup() {
   const [email, setEmail] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
+  const { signup, loading, error } = useSignup()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    signup(email, password, displayName)
   }
-
 
   return (
     <form 
@@ -27,15 +29,6 @@ function Signup() {
         />
       </label>
       <label>
-        <span>Display Name:</span>
-        <input 
-          type='text'
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-          required
-        />
-      </label>
-      <label>
         <span>Password:</span>
         <input 
           type='password'
@@ -44,9 +37,19 @@ function Signup() {
           required
         />
       </label>
-      <div className='btn-container'>
-        <button className='btn'>Submit</button>
-      </div>
+      <label>
+        <span>Display Name:</span>
+        <input 
+          type='text'
+          onChange={(e) => setDisplayName(e.target.value)}
+          value={displayName}
+          required
+        />
+      </label>
+        {!loading && <button className='btn'>Submit</button>}
+        {/* disable button while waiting for request */}
+        {loading && <button className='btn disabled' disabled>Loading</button>}
+      {error && <p>{error}</p>}
     </form>
   )
 }

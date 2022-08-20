@@ -6,7 +6,7 @@ export const useSignup = () => {
   const [loading, setLoading] = useState(false)
 
   // signup function to invoke after user clicks submit
-  const signup = async (email, displayName, password) => {
+  const signup = async (email, password, displayName) => {
     setError(null)
     setLoading(true)
 
