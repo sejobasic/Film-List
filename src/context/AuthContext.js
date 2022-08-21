@@ -9,9 +9,11 @@ export const authReducer = (state, action) => {
   // check action type
   // if the action type we pass through doesn't match any cases it just defaults to current state
   switch (action.type) {
+    // when we dispatch a login action with the type of action we return a new obj to represent our state
     case 'LOGIN':
-      // when we dispatch a login action with the type of action we return a new obj to represent our state
       return { ...state, user: action.payload }
+    case 'LOGOUT':
+      return { ...state, user: null}
     default:
       return state
   }
