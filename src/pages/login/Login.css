@@ -32,3 +32,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.login-form.dark label,
+.login-form.dark span,
+.login-form.dark h2 {
+  color: var(--light-grey)
+}

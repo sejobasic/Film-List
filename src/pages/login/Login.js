@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../../hooks/useTheme'
 import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const { color, mode } = useTheme()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -12,7 +15,7 @@ function Login() {
 
   return (
     <form 
-      className='login-form'
+      className={`login-form ${mode}`}
       onSubmit={handleSubmit}
     >
       <h2>Login</h2>
@@ -35,9 +38,9 @@ function Login() {
         />
       </label>
       <div className='btn-container'>
-        <button className='btn'>Login</button>
+        <button style={{ background: color }} className='btn'>Login</button>
         <Link exact to='/signup'>
-        <button className='btn'>Signup</button>
+        <button style={{ background: color }} className='btn'>Signup</button>
         </Link>
       </div>
     </form>

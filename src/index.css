@@ -67,10 +67,10 @@ input, textarea {
 }
 
 .btn {
-  background: none;
+  border: none;
+  background: var(--navbar-bg-color);
   cursor: pointer;
-  border: 2px solid var(--navbar-bg-color);
-  color: var(--navbar-bg-color);
+  color: #fff;
   text-decoration: none;
   font-size: 1em;
   border-radius: 5px;
@@ -80,6 +80,5 @@ input, textarea {
 }
 
 .btn:hover {
-  background: var(--navbar-bg-color);
-  color: #fff;
+  opacity: 0.7;
 }

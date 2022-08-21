@@ -31,3 +31,12 @@
 .disabled:hover {
   opacity: 0.5;
 }
+
+/* dark mode */
+
+
+.signup-form.dark label,
+.signup-form.dark span,
+.signup-form.dark h2 {
+  color: var(--light-grey)
+}

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useSignup } from '../../hooks/useSignup'
+import { useTheme } from '../../hooks/useTheme'
 import './Signup.css'
 
 function Signup() {
   const [email, setEmail] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
+  // custom hooks
   const { signup, loading, error } = useSignup()
+  const { color, mode } = useTheme()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -15,7 +18,7 @@ function Signup() {
 
   return (
     <form 
-      className='signup-form'
+      className={`signup-form ${mode}`}
       onSubmit={handleSubmit}
     >
       <h2>Signup</h2>
@@ -46,7 +49,7 @@ function Signup() {
           required
         />
       </label>
-        {!loading && <button className='btn'>Submit</button>}
+        {!loading && <button style={{ background: color }} className='btn'>Submit</button>}
         {/* disable button while waiting for request */}
         {loading && <button className='btn disabled' disabled>Loading</button>}
       {error && <p>{error}</p>}
