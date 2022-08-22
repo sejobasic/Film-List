@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
 // Page Components
 import Navbar from './components/navbar/Navbar'
@@ -13,9 +13,12 @@ import Signup from './pages/signup/Signup'
 import ThemeSelector from './components/theme-selector/ThemeSelector'
 import { useTheme } from './hooks/useTheme'
 import Loader from './pages/pre-loader/Loader'
+import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
   const [loading, setLoading] = useState(false)
+
+  const { authIsReady, user } = useAuthContext()
   const { mode } = useTheme()
 
   // animate functions for navbar component
@@ -52,33 +55,39 @@ function App() {
             initial='hidden'
             animate='visible'
           >
-            <BrowserRouter>
-              <Navbar />
-              <ThemeSelector />
-              <Switch>
-                <Route exact path='/'>
-                  <Login />
-                </Route>
-                <Route exact path='/signup'>
-                  <Signup />
-                </Route>
-                <Route exact path='/'>
-                  <Home />
-                </Route>
-                <Route exact path='/search'>
-                  <Search />
-                </Route>
-                <Route exact path='/create'>
-                  <Create />
-                </Route>
-                <Route exact path='/edit/:id'>
-                  <Create />
-                </Route>
-                <Route exact path='/films/:id'>
-                  <Film />
-                </Route>
-              </Switch>
-            </BrowserRouter>
+            {authIsReady && (
+              <BrowserRouter>
+                <Navbar />
+                <ThemeSelector />
+                <Switch>
+                  <Route exact path='/login'>
+                    {user && <Redirect to='/' />}
+                    {!user && <Login />}
+                  </Route>
+                  <Route exact path='/signup'>
+                    {user && <Redirect to='/' />}
+                    {!user && <Signup />}
+                  </Route>
+                  <Route exact path='/'>
+                    {/* If we don't have a user logged in redirect them to login page otherwise show home page */}
+                    {!user && <Redirect to='/login' />}
+                    {user && <Home />}
+                  </Route>
+                  <Route exact path='/search'>
+                    <Search />
+                  </Route>
+                  <Route exact path='/create'>
+                    <Create />
+                  </Route>
+                  <Route exact path='/edit/:id'>
+                    <Create />
+                  </Route>
+                  <Route exact path='/films/:id'>
+                    <Film />
+                  </Route>
+                </Switch>
+              </BrowserRouter>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
