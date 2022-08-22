@@ -2,43 +2,42 @@ import { useEffect, useState } from 'react'
 import { auth } from '../firebase/config'
 import { useAuthContext } from './useAuthContext'
 
-export const useLogout = () => {
+export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const { dispatch } = useAuthContext()
 
-  const logout = async () => {
+  const login = async (email, password) => {
     setError(null)
     setLoading(true)
 
-    // sign the user out
+    // sign the user in
     try {
-      await auth.signOut()
+      const res = await auth.signInWithEmailAndPassword(email, password)
 
-      // dispatch logout action
-      dispatch({ type: 'LOGOUT' })
+      // dispatch login action
+      dispatch({ type: 'LOGIN', payload: res.user })
 
       // update state
-      // only update our state when setIsCancelled is false
       if (!isCancelled) {
         setLoading(false)
         setError(null)
       }
-    } catch (err) {
+    }
+    catch(err) {
       if (!isCancelled) {
+        console.log(err.message)
         setError(err.message)
         setLoading(false)
       }
     }
   }
 
-  // cleanup function
-  // when component unmounts we are not allowing state to be updated
   useEffect(() => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { logout, error, setLoading }
+  return { login, error, loading}
 }

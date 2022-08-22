@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLogin } from '../../hooks/useLogin'
 import { useTheme } from '../../hooks/useTheme'
 import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  
+  const { login, error, loading } = useLogin()
   const { color, mode } = useTheme()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    login(email, password)
   }
 
   return (
@@ -38,11 +41,13 @@ function Login() {
         />
       </label>
       <div className='btn-container'>
-        <button style={{ background: color }} className='btn'>Login</button>
+        {!loading && <button style={{ background: color }} className='btn'>Login</button>}
+        {loading && <button className='btn disabled' disabled>Loading</button>}
         <Link exact to='/signup'>
         <button style={{ background: color }} className='btn'>Signup</button>
         </Link>
       </div>
+      {error && <p>{error}</p>}
     </form>
   )
 }
