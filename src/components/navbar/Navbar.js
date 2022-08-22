@@ -26,13 +26,15 @@ function Navbar() {
             <Link className='add-film' to='/create?action=create'>
               Add Film
             </Link>
-            <p>logged in as: {user.displayName}</p>
-            <img 
-              className='logout' 
-              src={logoutIcon}
-              onClick={logout}
-              alt='logout icon' 
-            />
+            <div className='logout-container'>
+              <p>logged in as: {user.displayName}</p>
+              <img 
+                className='logout' 
+                src={logoutIcon}
+                onClick={logout}
+                alt='logout icon' 
+              />
+            </div>
           </>
         )}
       </nav>

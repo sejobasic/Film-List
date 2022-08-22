@@ -6,11 +6,13 @@ import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
 import deleteIcon from '../../assets/delete-icon.svg'
 import editIcon from '../../assets/edit-icon.svg'
 import './FilmList.css'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 function FilmList({ films, isDeleted }) {
   const [addedFilm, setAddedFilm] = useState(null)
   const [updatedFilm, setUpdatedFilm] = useState(null)
 
+  const { user } = useAuthContext()
   const { color, mode } = useTheme()
   const location = useLocation()
   const history = useHistory()
@@ -121,6 +123,9 @@ function FilmList({ films, isDeleted }) {
   })
   return (
     <>
+      <div className='user-list'>
+        <h3 style={{ color: color }}>{user.displayName}s Film List</h3>
+      </div>
       <motion.div variants={alertVariant} initial='hidden' animate='visible'>
         <div
           className='delete-alert-container'

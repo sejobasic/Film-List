@@ -7,6 +7,11 @@
   padding: 30px;
 }
 
+.user-list {
+  display: flex;
+  justify-content: center;
+}
+
 .card img {
   max-width: 80%;
   align-items: center;
