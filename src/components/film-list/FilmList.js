@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useTheme } from '../../hooks/useTheme'
-import { dataBase } from '../../firebase/config'
-import { useCollection } from '../../hooks/useCollection'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
 import deleteIcon from '../../assets/delete-icon.svg'
 import editIcon from '../../assets/edit-icon.svg'
 import './FilmList.css'
 import { useFirestore } from '../../hooks/useFirestore'
+import { useCollection } from '../../hooks/useCollection'
 
 function FilmList({ films, isDeleted }) {
   const [addedFilm, setAddedFilm] = useState(null)
@@ -16,6 +15,12 @@ function FilmList({ films, isDeleted }) {
 
   const { deleteDocument } = useFirestore('films')
   const { user } = useAuthContext()
+  const { documents, collectionError } = useCollection(
+    'films',
+    // these our the query strings for our firebase collection to locate data based off users id
+    ['uid', '==', user.uid],
+    ['createdAt', 'desc']
+  )
   const { color, mode } = useTheme()
 
   const location = useLocation()

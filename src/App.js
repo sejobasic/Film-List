@@ -15,6 +15,7 @@ import { useTheme } from './hooks/useTheme'
 import Loader from './pages/pre-loader/Loader'
 import { useAuthContext } from './hooks/useAuthContext'
 import SearchBar from './components/search-bar/SearchBar'
+import Update from './pages/update/Update'
 
 function App() {
   const [loading, setLoading] = useState(false)
@@ -81,7 +82,7 @@ function App() {
                     <Create />
                   </Route>
                   <Route exact path='/edit/:id'>
-                    <Create />
+                    <Update />
                   </Route>
                   <Route exact path='/films/:id'>
                     <Film />

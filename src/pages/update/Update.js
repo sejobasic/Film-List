@@ -1,12 +1,12 @@
+
 import React, { useState, useEffect } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
-import { useFirestore } from '../../hooks/useFirestore'
-import { useAuthContext } from '../../hooks/useAuthContext'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
+import { dataBase } from '../../firebase/config'
 import { useTheme } from '../../hooks/useTheme'
 import { motion } from 'framer-motion/dist/framer-motion'
-import './Create.css'
+import './Update.css'
 
-function Create() {
+function Update() {
   const [title, setTitle] = useState('')
   const [genre, setGenre] = useState('')
   const [filmImage, setFilmImage] = useState('')
@@ -14,10 +14,7 @@ function Create() {
   const [description, setDescription] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-
-  const { user } = useAuthContext()
   const { color, mode } = useTheme()
-  const { addDocument, response} = useFirestore('films')
 
   //Query Parameters
   const history = useHistory()
@@ -25,48 +22,47 @@ function Create() {
   const queryParams = new URLSearchParams(queryString)
   const action = queryParams.get('action')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitted(true)
-    const filmToAdd = addDocument({
-      uid: user.uid,
-      title,
-      genre,
-      filmImage,
-      link,
-      description
-    })
-    if (action === 'create') {
-      // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
-      try {
-        await filmToAdd
-        setIsSubmitted(false)
-        history.push({
-          pathname: '/',
-          state: { addedFilm: filmToAdd },
-        })
-        // fire catch block if error is found
-      } catch (error) {
-        console.log(error)
-      }
-    }
-  }
-  
+  //Route parameters
+  const params = useParams()
+  const id = params.id
+
+  // Update individual film
   useEffect(() => {
-    // reset add film form if the success property on the response obj is true
-    // redirect user to home
-    if (response.success) {
+    if (!action) {
+      const docRef = dataBase.collection('films').doc(id)
+      docRef.get().then((document) => {
+        const data = document.data()
+        setTitle(data.title)
+        setGenre(data.genre)
+        setFilmImage(data.filmImage)
+        setLink(data.link)
+        setDescription(data.description)
+      })
+    } else {
       setTitle('')
       setGenre('')
       setFilmImage('')
       setLink('')
       setDescription('')
-      history.push({
-        pathname: '/'
-        
-    })
-  }
-  }, [response.success, history])
+    }
+  }, [action, id])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitted(true)
+    const filmToUpdate = { title, genre, filmImage, link, description }
+      try {
+        await dataBase.collection('films').doc(id).update(filmToUpdate)
+        setIsSubmitted(false)
+        // Redirect user to home when we get data response
+        history.push({
+          pathname: '/',
+          state: { updatedFilm: filmToUpdate },
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
   // animate functions for form component
   const formVariant = {
@@ -155,4 +151,4 @@ function Create() {
   )
 }
 
-export default Create
+export default Update
