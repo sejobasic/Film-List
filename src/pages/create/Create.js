@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation, useParams } from 'react-router-dom'
 import { dataBase } from '../../firebase/config'
+import { useFirestore } from '../../hooks/useFirestore'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { useTheme } from '../../hooks/useTheme'
 import { motion } from 'framer-motion/dist/framer-motion'
 import './Create.css'
@@ -13,7 +15,9 @@ function Create() {
   const [description, setDescription] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  const { user } = useAuthContext()
   const { color, mode } = useTheme()
+  const { addDocument, response} = useFirestore('films')
 
   //Query Parameters
   const history = useHistory()
@@ -49,35 +53,57 @@ function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitted(true)
-    const filmToAddOrUpdate = { title, genre, filmImage, link, description }
+    addDocument({
+      uid: user.uid,
+      title,
+      genre,
+      filmImage,
+      link,
+      description
+    })
+    // const filmToAddOrUpdate = { title, genre, filmImage, link, description }
 
-    if (action === 'create') {
+    // if (action === 'create') {
       // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
-      try {
-        await dataBase.collection('films').add(filmToAddOrUpdate)
-        setIsSubmitted(false)
-        history.push({
-          pathname: '/',
-          state: { addedFilm: filmToAddOrUpdate },
-        })
+      // try {
+      //   await dataBase.collection('films').add(filmToAddOrUpdate)
+      //   setIsSubmitted(false)
+      //   history.push({
+      //     pathname: '/',
+      //     state: { addedFilm: filmToAddOrUpdate },
+      //   })
         // fire catch block if error is found
-      } catch (error) {
-        console.log(error)
-      }
-    } else {
-      try {
-        await dataBase.collection('films').doc(id).update(filmToAddOrUpdate)
-        setIsSubmitted(false)
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // } else {
+    //   try {
+    //     await dataBase.collection('films').doc(id).update(filmToAddOrUpdate)
+    //     setIsSubmitted(false)
         // Redirect user to home when we get data response
-        history.push({
-          pathname: '/',
-          state: { updatedFilm: filmToAddOrUpdate },
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    //     history.push({
+    //       pathname: '/',
+    //       state: { updatedFilm: filmToAddOrUpdate },
+    //     })
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
   }
+
+  useEffect(() => {
+    // reset add film form if the success property on the response obj is true
+    if (response.success) {
+      setTitle('')
+      setGenre('')
+      setFilmImage('')
+      setLink('')
+      setDescription('')
+      history.push({
+        pathname: '/'
+    })
+  }
+  }, [response.success])
 
   // animate functions for form component
   const formVariant = {

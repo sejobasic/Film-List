@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useState } from 'react'
-import { auth } from '../firebase/config'
+import { dataBase, timestamp } from '../firebase/config'
 
 let initialState = {
   document: null,
@@ -41,7 +41,7 @@ export const useFirestore = (collection) => {
   const [isCancelled, setIsCancelled] = useState(false)
 
   // collection ref
-  const ref = auth.collection(collection)
+  const ref = dataBase.collection(collection)
 
   // only dispatch if not cancelled
   const dispatchIfNotCancelled = (action) => {
@@ -55,7 +55,10 @@ export const useFirestore = (collection) => {
     dispatch({ type: 'IS_PENDING' })
 
     try {
-      const addedDocument = await ref.add(doc)
+      // This func takes the current date at the time of adding a new document and passes the date to the timestamp object which creates a new firebase timestamp and stores it in createdAt
+      const createdAt = timestamp.fromDate(new Date())
+      const addedDocument = await ref.add({ ...doc, createdAt })
+      
       dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument })
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })

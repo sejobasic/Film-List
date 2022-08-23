@@ -18,5 +18,8 @@ firebase.initializeApp(firebaseConfig)
 const dataBase = firebase.firestore()
 const auth = firebase.auth()
 
+// timestamp function to order our data correctly from newest added at the top
+const timestamp = firebase.firestore.Timestamp
+
 // export anything we will use
-export { dataBase, auth }
+export { dataBase, auth, timestamp }
