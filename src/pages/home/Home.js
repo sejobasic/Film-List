@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { dataBase } from '../../firebase/config'
+import { useCollection } from '../../hooks/useCollection'
 import loader from '../../assets/loader.svg'
 import FilmList from '../../components/film-list/FilmList'
 import { useTheme } from '../../hooks/useTheme'
@@ -11,6 +12,7 @@ function Home() {
   const [error, setError] = useState(false)
   const [deletedFilm, setDeletedFilm] = useState(false)
 
+  const { documents, collectionError } = useCollection('films')
   const { mode } = useTheme()
 
   useEffect(() => {
@@ -65,7 +67,7 @@ function Home() {
           <img className='loading' src={loader} alt='loading...' />
         </div>
       )}
-      {data && <FilmList films={data} isDeleted={deletedFilm} />}
+      {documents && <FilmList films={documents} isDeleted={deletedFilm} />}
     </div>
   )
 }
