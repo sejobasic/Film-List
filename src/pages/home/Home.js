@@ -5,6 +5,8 @@ import loader from '../../assets/loader.svg'
 import FilmList from '../../components/film-list/FilmList'
 import { useTheme } from '../../hooks/useTheme'
 import './Home.css'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import SearchBar from '../../components/search-bar/SearchBar'
 
 function Home() {
   const [data, setData] = useState(null)
@@ -12,7 +14,13 @@ function Home() {
   const [error, setError] = useState(false)
   const [deletedFilm, setDeletedFilm] = useState(false)
 
-  const { documents, collectionError } = useCollection('films')
+  const { user } = useAuthContext()
+  const { documents, collectionError } = useCollection(
+    'films',
+    // these our the query strings for our firebase collection to locate data based off users id
+    ['uid', '==', user.uid]
+
+    )
   const { mode } = useTheme()
 
   useEffect(() => {

@@ -6,12 +6,14 @@ import './Search.css'
 
 //Firestore
 import { dataBase } from '../../firebase/config'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 function Search() {
   const queryString = useLocation().search
   const queryParams = new URLSearchParams(queryString)
   const query = queryParams.get('q')
 
+  const { user } = useAuthContext()
   const { mode } = useTheme()
 
   const [films, setFilms] = useState(null)
@@ -22,7 +24,7 @@ function Search() {
   useEffect(() => {
     setIsLoading(true)
     setFilms(null)
-    const collectionRef = dataBase.collection('films')
+    const collectionRef = dataBase.collection('films').where('uid', '==', user.uid)
     collectionRef.get().then((docs) => {
       let docArray = []
       docs.forEach((doc) => {

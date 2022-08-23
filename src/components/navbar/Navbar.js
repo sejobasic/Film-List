@@ -22,7 +22,7 @@ function Navbar() {
         {/* Render elements only when user is logged in */}
         {user && (
           <>
-            {/* <SearchBar /> */}
+            <SearchBar />
             <Link className='add-film' to='/create?action=create'>
               Add Film
             </Link>

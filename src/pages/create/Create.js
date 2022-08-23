@@ -93,6 +93,7 @@ function Create() {
 
   useEffect(() => {
     // reset add film form if the success property on the response obj is true
+    // redirect user to home
     if (response.success) {
       setTitle('')
       setGenre('')
@@ -103,7 +104,7 @@ function Create() {
         pathname: '/'
     })
   }
-  }, [response.success])
+  }, [response.success, history])
 
   // animate functions for form component
   const formVariant = {
