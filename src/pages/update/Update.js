@@ -1,9 +1,14 @@
-
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation, useParams } from 'react-router-dom'
-import { dataBase } from '../../firebase/config'
-import { useTheme } from '../../hooks/useTheme'
 import { motion } from 'framer-motion/dist/framer-motion'
+
+// Firebase
+import { dataBase } from '../../firebase/config'
+
+// Custom Hooks
+import { useTheme } from '../../hooks/useTheme'
+
+// Styling
 import './Update.css'
 
 function Update() {
@@ -12,7 +17,6 @@ function Update() {
   const [filmImage, setFilmImage] = useState('')
   const [link, setLink] = useState('')
   const [description, setDescription] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const { color, mode } = useTheme()
 
@@ -49,20 +53,18 @@ function Update() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsSubmitted(true)
     const filmToUpdate = { title, genre, filmImage, link, description }
-      try {
-        await dataBase.collection('films').doc(id).update(filmToUpdate)
-        setIsSubmitted(false)
-        // Redirect user to home when we get data response
-        history.push({
-          pathname: '/',
-          state: { updatedFilm: filmToUpdate },
-        })
-      } catch (error) {
-        console.log(error)
-      }
+    try {
+      await dataBase.collection('films').doc(id).update(filmToUpdate)
+      // Redirect user to home when we get data response
+      history.push({
+        pathname: '/',
+        state: { updatedFilm: filmToUpdate },
+      })
+    } catch (error) {
+      console.log(error)
     }
+  }
 
   // animate functions for form component
   const formVariant = {

@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
-import './Loader.css'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
+
+// Assets
 import logo from '../../assets/logo.png'
 import preloader from '../../assets/preloader.svg'
+
+// Styling
+import './Loader.css'
 
 function Loader() {
   const [showLoader, setShowLoader] = useState(true)

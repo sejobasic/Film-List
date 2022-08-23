@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
-// Page Components
+
+// Pages and Components
 import Navbar from './components/navbar/Navbar'
 import Home from './pages/home/Home'
 import Search from './pages/search/Search'
@@ -11,15 +11,20 @@ import Film from './pages/film/Film'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import ThemeSelector from './components/theme-selector/ThemeSelector'
-import { useTheme } from './hooks/useTheme'
 import Loader from './pages/pre-loader/Loader'
-import { useAuthContext } from './hooks/useAuthContext'
-import SearchBar from './components/search-bar/SearchBar'
 import Update from './pages/update/Update'
+
+// Custom Hooks
+import { useTheme } from './hooks/useTheme'
+import { useAuthContext } from './hooks/useAuthContext'
+
+// Styling
+import './App.css'
 
 function App() {
   const [loading, setLoading] = useState(false)
 
+  // Custom Hooks
   const { authIsReady, user } = useAuthContext()
   const { mode } = useTheme()
 

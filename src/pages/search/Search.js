@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useTheme } from '../../hooks/useTheme'
 import FilmList from '../../components/film-list/FilmList'
+import { useLocation } from 'react-router-dom'
+
+// Custom Hooks
+import { useTheme } from '../../hooks/useTheme'
+
+// Styling
 import './Search.css'
 
 //Firestore
@@ -24,7 +28,9 @@ function Search() {
   useEffect(() => {
     setIsLoading(true)
     setFilms(null)
-    const collectionRef = dataBase.collection('films').where('uid', '==', user.uid)
+    const collectionRef = dataBase
+      .collection('films')
+      .where('uid', '==', user.uid)
     collectionRef.get().then((docs) => {
       let docArray = []
       docs.forEach((doc) => {

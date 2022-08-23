@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+// Custom Hooks
 import { useLogin } from '../../hooks/useLogin'
 import { useTheme } from '../../hooks/useTheme'
+
+// Styling
 import './Login.css'
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  
+
+  // Custom Hooks
   const { login, error, loading } = useLogin()
   const { color, mode } = useTheme()
 
@@ -17,14 +22,11 @@ function Login() {
   }
 
   return (
-    <form 
-      className={`login-form ${mode}`}
-      onSubmit={handleSubmit}
-    >
+    <form className={`login-form ${mode}`} onSubmit={handleSubmit}>
       <h2>Login</h2>
       <label>
         <span>Email:</span>
-        <input 
+        <input
           type='email'
           onChange={(e) => setEmail(e.target.value)}
           value={email}
@@ -33,7 +35,7 @@ function Login() {
       </label>
       <label>
         <span>Password:</span>
-        <input 
+        <input
           type='password'
           onChange={(e) => setPassword(e.target.value)}
           value={password}
@@ -41,10 +43,20 @@ function Login() {
         />
       </label>
       <div className='btn-container'>
-        {!loading && <button style={{ background: color }} className='btn'>Login</button>}
-        {loading && <button className='btn disabled' disabled>Loading</button>}
+        {!loading && (
+          <button style={{ background: color }} className='btn'>
+            Login
+          </button>
+        )}
+        {loading && (
+          <button className='btn disabled' disabled>
+            Loading
+          </button>
+        )}
         <Link exact to='/signup'>
-        <button style={{ background: color }} className='btn'>Signup</button>
+          <button style={{ background: color }} className='btn'>
+            Signup
+          </button>
         </Link>
       </div>
       {error && <p>{error}</p>}

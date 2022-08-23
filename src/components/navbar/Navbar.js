@@ -1,14 +1,22 @@
 import React from 'react'
-import './Navbar.css'
 import SearchBar from '../search-bar/SearchBar'
 import { Link } from 'react-router-dom'
+
+// Custom hooks
 import { useTheme } from '../../hooks/useTheme'
 import { useLogout } from '../../hooks/useLogout'
-import logo from '../../assets/logo.png'
-import logoutIcon from '../../assets/logout-icon.svg'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
+// Assets
+import logo from '../../assets/logo.png'
+import logoutIcon from '../../assets/logout-icon.svg'
+
+// Styling
+import './Navbar.css'
+
 function Navbar() {
+  
+  // Custom Hooks
   const { color } = useTheme()
   const { logout } = useLogout()
   const { user } = useAuthContext()

@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { dataBase } from '../../firebase/config'
-import loader from '../../assets/loader.svg'
+
+// Custom Hooks
 import { useTheme } from '../../hooks/useTheme'
+
+// Assets
+import loader from '../../assets/loader.svg'
+
+// Styling
 import './Film.css'
 
 function Film() {
@@ -33,17 +39,9 @@ function Film() {
         setError('Could not find film')
       }
     })
-
     // cleanup func for when component unmounts
     return () => unsub()
   }, [id])
-
-  // Update single document in collection
-  // const handleUpdate = () => {
-  //   projectFirestore.collection('films').doc(id).update({
-  //     title:
-  //   })
-  // }
 
   return (
     <div className={`film ${mode}`}>

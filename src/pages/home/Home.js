@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { dataBase } from '../../firebase/config'
+import React from 'react'
+
+// Custom Hooks
 import { useCollection } from '../../hooks/useCollection'
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { useTheme } from '../../hooks/useTheme'
+
+// Assets
 import loader from '../../assets/loader.svg'
 import FilmList from '../../components/film-list/FilmList'
-import { useTheme } from '../../hooks/useTheme'
+
+// Styling
 import './Home.css'
-import { useAuthContext } from '../../hooks/useAuthContext'
 
 function Home() {
 
+  // Custom Hooks
   const { user } = useAuthContext()
   const { mode } = useTheme()
   const { documents, collectionError, deletedFilm, loading } = useCollection(
@@ -16,9 +22,7 @@ function Home() {
     // these our the query strings for our firebase collection to locate data based off users id
     ['uid', '==', user.uid],
     ['createdAt', 'desc']
-
-    )
-
+  )
 
   return (
     <div className='home'>

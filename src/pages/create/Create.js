@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
+import { motion } from 'framer-motion/dist/framer-motion'
+
+// Custom Hooks
 import { useFirestore } from '../../hooks/useFirestore'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useTheme } from '../../hooks/useTheme'
-import { motion } from 'framer-motion/dist/framer-motion'
+
+// Styling
 import './Create.css'
 
 function Create() {
@@ -12,12 +16,11 @@ function Create() {
   const [filmImage, setFilmImage] = useState('')
   const [link, setLink] = useState('')
   const [description, setDescription] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
-
+  // Custom Hooks
   const { user } = useAuthContext()
   const { color, mode } = useTheme()
-  const { addDocument, response} = useFirestore('films')
+  const { addDocument, response } = useFirestore('films')
 
   //Query Parameters
   const history = useHistory()
@@ -27,20 +30,18 @@ function Create() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsSubmitted(true)
     const filmToAdd = addDocument({
       uid: user.uid,
       title,
       genre,
       filmImage,
       link,
-      description
+      description,
     })
     if (action === 'create') {
       // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
       try {
         await filmToAdd
-        setIsSubmitted(false)
         history.push({
           pathname: '/',
           state: { addedFilm: filmToAdd },
@@ -51,7 +52,7 @@ function Create() {
       }
     }
   }
-  
+
   useEffect(() => {
     // reset add film form if the success property on the response obj is true
     // redirect user to home
@@ -62,10 +63,9 @@ function Create() {
       setLink('')
       setDescription('')
       history.push({
-        pathname: '/'
-        
-    })
-  }
+        pathname: '/',
+      })
+    }
   }, [response.success, history])
 
   // animate functions for form component

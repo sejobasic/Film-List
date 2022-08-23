@@ -1,7 +1,13 @@
 import React from 'react'
+
+// Custom Hooks
 import { useTheme } from '../../hooks/useTheme'
+
+// Assets
 import modeIcon from '../../assets/mode-icon.svg'
 import modeIconFill from '../../assets/mode-icon-fill.svg'
+
+// Styling
 import './ThemeSelector.css'
 
 // Array of theme colors that we will map through and output a btn to change color

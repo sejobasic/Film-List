@@ -7,9 +7,8 @@ export const useCollection = (collection, _query, _orderBy) => {
   const [loading, setLoading] = useState(false)
   const [deletedFilm, setDeletedFilm] = useState(false)
 
-
   // when we wrap a ref type in useRef it doesn't see it as a different on every component
-  // if we dont use a ref then we get infinite loop in useEffect
+  // if we don't use a ref then we get infinite loop in useEffect
   // _query is an array and is 'different' on every function call
   const query = useRef(_query).current
   const orderBy = useRef(_orderBy).current
@@ -29,44 +28,46 @@ export const useCollection = (collection, _query, _orderBy) => {
     }
 
     // fire func anytime we get a snapshot from the collection
-    const unsubscribe = ref.onSnapshot((snapshot) => {
+    const unsubscribe = ref.onSnapshot(
+      (snapshot) => {
+        // onSnapshot sends us current state of collection, it is used for real time collection data
+        // When deleting an item the snapshot fires up again and goes through all documents and updates local state to match those current docs which would not include the deleted doc
 
-      if (snapshot.empty) {
+        if (snapshot.empty) {
+          setCollectionError('No Films Found')
+          setLoading(false)
+        } else {
+          if (snapshot.docChanges()[0]._delegate.type === 'removed') {
+            setDeletedFilm(true)
+            setTimeout(() => {
+              setDeletedFilm(false)
+            }, 2000)
+          } else {
+            setDeletedFilm(false)
+          }
+        }
+
+        let results = []
+        snapshot.docs.forEach((doc) => {
+          // create a new document obj for each document that we have
+          results.push({ ...doc.data(), id: doc.id })
+        })
+
+        // update state
+        setCollectionError(null)
+        setLoading(false)
+        setDocuments(results)
+      },
+      (error) => {
+        console.log(error)
         setCollectionError('No Films Found')
         setLoading(false)
-      } else {
-        if (snapshot.docChanges()[0]._delegate.type === 'removed') {
-          setDeletedFilm(true)
-          setTimeout(() => {
-            setDeletedFilm(false)
-          }, 3000)
-        } else {
-          setDeletedFilm(false)
-        }
       }
-
-      
-
-      let results = []
-      snapshot.docs.forEach(doc => {
-        // create a new document obj for each document that we have
-        results.push({ ...doc.data(), id: doc.id })
-      })
-
-      // update state
-      setCollectionError(null)
-      setLoading(false)
-      setDocuments(results)
-    }, (error) => {
-      console.log(error)
-      setCollectionError('No Films Found')
-      setLoading(false)
-    })
+    )
 
     // unsubscribe on unmount
     // when we are not on page we are no longer listening for snapshot events
     return () => unsubscribe()
-
   }, [collection, query, orderBy])
 
   return { documents, collectionError, deletedFilm, loading }

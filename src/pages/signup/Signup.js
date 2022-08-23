@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+
+// Custom Hooks
 import { useSignup } from '../../hooks/useSignup'
 import { useTheme } from '../../hooks/useTheme'
+
+// Styling
 import './Signup.css'
 
 function Signup() {
   const [email, setEmail] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
-  // custom hooks
+
+  // Custom Hooks
   const { signup, loading, error } = useSignup()
   const { color, mode } = useTheme()
 
@@ -17,14 +22,11 @@ function Signup() {
   }
 
   return (
-    <form 
-      className={`signup-form ${mode}`}
-      onSubmit={handleSubmit}
-    >
+    <form className={`signup-form ${mode}`} onSubmit={handleSubmit}>
       <h2>Signup</h2>
       <label>
         <span>Email:</span>
-        <input 
+        <input
           type='email'
           onChange={(e) => setEmail(e.target.value)}
           value={email}
@@ -33,7 +35,7 @@ function Signup() {
       </label>
       <label>
         <span>Password:</span>
-        <input 
+        <input
           type='password'
           onChange={(e) => setPassword(e.target.value)}
           value={password}
@@ -42,16 +44,24 @@ function Signup() {
       </label>
       <label>
         <span>Display Name:</span>
-        <input 
+        <input
           type='text'
           onChange={(e) => setDisplayName(e.target.value)}
           value={displayName}
           required
         />
       </label>
-        {!loading && <button style={{ background: color }} className='btn'>Submit</button>}
-        {/* disable button while waiting for request */}
-        {loading && <button className='btn disabled' disabled>Loading</button>}
+      {!loading && (
+        <button style={{ background: color }} className='btn'>
+          Submit
+        </button>
+      )}
+      {/* disable button while waiting for request */}
+      {loading && (
+        <button className='btn disabled' disabled>
+          Loading
+        </button>
+      )}
       {error && <p>{error}</p>}
     </form>
   )
