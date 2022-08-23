@@ -61,34 +61,6 @@ function Create() {
       link,
       description
     })
-    // const filmToAddOrUpdate = { title, genre, filmImage, link, description }
-
-    // if (action === 'create') {
-      // Add a new document using add method passing in the doc obj which will generate a new doc inside the films collection and adds a unique id
-      // try {
-      //   await dataBase.collection('films').add(filmToAddOrUpdate)
-      //   setIsSubmitted(false)
-      //   history.push({
-      //     pathname: '/',
-      //     state: { addedFilm: filmToAddOrUpdate },
-      //   })
-        // fire catch block if error is found
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // } else {
-    //   try {
-    //     await dataBase.collection('films').doc(id).update(filmToAddOrUpdate)
-    //     setIsSubmitted(false)
-        // Redirect user to home when we get data response
-    //     history.push({
-    //       pathname: '/',
-    //       state: { updatedFilm: filmToAddOrUpdate },
-    //     })
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
   }
 
   useEffect(() => {

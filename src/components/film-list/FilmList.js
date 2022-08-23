@@ -8,15 +8,19 @@ import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
 import deleteIcon from '../../assets/delete-icon.svg'
 import editIcon from '../../assets/edit-icon.svg'
 import './FilmList.css'
+import { useFirestore } from '../../hooks/useFirestore'
 
 function FilmList({ films, isDeleted }) {
   const [addedFilm, setAddedFilm] = useState(null)
   const [updatedFilm, setUpdatedFilm] = useState(null)
 
+  const { deleteDocument } = useFirestore('films')
   const { user } = useAuthContext()
   const { color, mode } = useTheme()
+
   const location = useLocation()
   const history = useHistory()
+  
 
   const hasRenderedFilms = useRef(false)
   // use effect to track rendered film
@@ -45,14 +49,6 @@ function FilmList({ films, isDeleted }) {
 
   if (films.length === 0) {
     return <div className={`error ${mode}`}>No Films Found</div>
-  }
-
-  // Delete document from database
-  const handleDelete = async (id) => {
-    setAddedFilm(null)
-    const collectionRef = dataBase.collection('films')
-    const docToDelete = collectionRef.doc(id)
-    await docToDelete.delete()
   }
 
   // animate functions for alert boxes
@@ -108,7 +104,7 @@ function FilmList({ films, isDeleted }) {
           </Link>
           <img
             className='delete-icon'
-            onClick={() => handleDelete(film.id)}
+            onClick={() => deleteDocument(film.id)}
             src={deleteIcon}
             alt='delete icon'
           />

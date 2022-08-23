@@ -24,6 +24,13 @@ const firestoreReducer = (state, action) => {
         success: true,
         error: null,
       }
+    case 'DELETED_DOCUMENT':
+      return {
+        isLoading: false,
+        document: null,
+        success: true,
+        error: null,
+      }
     case 'ERROR':
       return {
         isLoading: false,
@@ -58,7 +65,7 @@ export const useFirestore = (collection) => {
       // This func takes the current date at the time of adding a new document and passes the date to the timestamp object which creates a new firebase timestamp and stores it in createdAt
       const createdAt = timestamp.fromDate(new Date())
       const addedDocument = await ref.add({ ...doc, createdAt })
-      
+
       dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument })
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
@@ -66,7 +73,17 @@ export const useFirestore = (collection) => {
   }
 
   //delete document
-  const deleteDocument = (id) => {}
+  const deleteDocument = async (id) => {
+    dispatch({ type: 'IS_PENDING' })
+
+    try {
+      await ref.doc(id).delete()
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
+    }
+    catch(err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: 'could not delete film'})
+    }
+  }
 
   // cleanup func
   useEffect(() => {

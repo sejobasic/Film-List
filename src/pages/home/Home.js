@@ -18,7 +18,8 @@ function Home() {
   const { documents, collectionError } = useCollection(
     'films',
     // these our the query strings for our firebase collection to locate data based off users id
-    ['uid', '==', user.uid]
+    ['uid', '==', user.uid],
+    ['createdAt', 'desc']
 
     )
   const { mode } = useTheme()
