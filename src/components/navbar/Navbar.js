@@ -10,12 +10,13 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 // Assets
 import logo from '../../assets/logo.png'
 import logoutIcon from '../../assets/logout-icon.svg'
+import addIcon from '../../assets/add-icon.svg'
 
 // Styling
 import './Navbar.css'
 
 function Navbar() {
-  
+
   // Custom Hooks
   const { color } = useTheme()
   const { logout } = useLogout()
@@ -30,12 +31,14 @@ function Navbar() {
         {/* Render elements only when user is logged in */}
         {user && (
           <>
-            <SearchBar />
-            <Link className='add-film' to='/create?action=create'>
-              Add Film
-            </Link>
+            <div className='search-container'>
+              <SearchBar />
+              <Link to='/create?action=create'>
+                <img className='add-film' src={addIcon} alt='icon for adding films' />
+              </Link>
+            </div>
             <div className='logout-container'>
-              <p>logged in as: {user.displayName}</p>
+              <p>hello, {user.displayName}</p>
               <img 
                 className='logout' 
                 src={logoutIcon}

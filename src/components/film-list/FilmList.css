@@ -12,6 +12,10 @@
   justify-content: center;
 }
 
+.user-list h2 {
+  text-transform: uppercase;
+}
+
 .card img {
   max-width: 80%;
   align-items: center;

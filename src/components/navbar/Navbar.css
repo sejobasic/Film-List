@@ -16,7 +16,7 @@
 }
 
 .navbar img:hover {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 .navbar a.brand {
@@ -26,16 +26,11 @@
 }
 
 .add-film {
-  color: #fff;
-  text-decoration: none;
   margin-right: 50px;
-  padding: 8px;
-  border: 1px solid #fff;
-  border-radius: 4px;
+  width:30px;
 }
 
 .add-film:hover {
-  background-color: #fff;
   color: #333;
 }
 
@@ -47,10 +42,17 @@
 
 .logout-container p {
   font-size: 16px;
+  text-transform: uppercase;
 }
 
 .logout {
   width:30px;
   cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 

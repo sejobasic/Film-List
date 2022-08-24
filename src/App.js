@@ -81,16 +81,20 @@ function App() {
                     {user && <Home />}
                   </Route>
                   <Route exact path='/search'>
-                    <Search />
+                    {!user && <Redirect to='/login' />}
+                    {user && <Search />}
                   </Route>
                   <Route exact path='/create'>
-                    <Create />
+                    {!user && <Redirect to='/login' />}
+                    {user && <Create />}
                   </Route>
                   <Route exact path='/edit/:id'>
-                    <Update />
+                    {!user && <Redirect to='/login' />}
+                    {user && <Update />}
                   </Route>
                   <Route exact path='/films/:id'>
-                    <Film />
+                    {!user && <Redirect to='/login' />}
+                    {user && <Film />}
                   </Route>
                 </Switch>
               </BrowserRouter>

@@ -45,10 +45,10 @@ function Search() {
 
   return (
     <div>
-      <h2 className={`page-title ${mode}`}>Films Including "{query}"</h2>
+      <h3 className={`page-title ${mode}`}>Films Including "{query}"</h3>
       {error && <p className={`error ${mode}`}>{error}</p>}
       {loading && <p className='loading'>Loading...</p>}
-      {films && <FilmList films={films} />}
+      {films && <FilmList films={films} query={query} />}
     </div>
   )
 }

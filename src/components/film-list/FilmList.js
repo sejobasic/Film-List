@@ -127,7 +127,7 @@ function FilmList({ films, isDeleted }) {
   return (
     <>
       <div className='user-list'>
-        <h3 style={{ color: color }}>{user.displayName}s Film List</h3>
+        <h2 style={{ color: color }}>{user.displayName}s Film List</h2>
       </div>
       <motion.div variants={alertVariant} initial='hidden' animate='visible'>
         <div

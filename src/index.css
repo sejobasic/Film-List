@@ -51,7 +51,7 @@ input:focus {
   text-align: center;
   margin: 10px auto;
   color: var(--dark-grey);
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .loading, .error {
