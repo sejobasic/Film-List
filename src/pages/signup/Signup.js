@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // Custom Hooks
 import { useSignup } from '../../hooks/useSignup'
 import { useTheme } from '../../hooks/useTheme'
+
+// Assets
+import arrowIcon from '../../assets/arrow-icon.svg'
 
 // Styling
 import './Signup.css'
@@ -51,17 +55,24 @@ function Signup() {
           required
         />
       </label>
-      {!loading && (
-        <button style={{ background: color }} className='btn'>
-          Submit
-        </button>
-      )}
-      {/* disable button while waiting for request */}
-      {loading && (
-        <button className='btn disabled' disabled>
-          Loading
-        </button>
-      )}
+      <div className='btn-container'>
+        {!loading && (
+          <div>
+          <button style={{ background: color }} className='btn'>
+            Submit
+          </button>
+          </div>
+        )}
+        {/* disable button while waiting for request */}
+        {loading && (
+          <button className='btn disabled' disabled>
+            Loading
+          </button>
+        )}
+        <Link exact to='/login'>
+          <img className='arrow-icon' src={arrowIcon} alt='go back arrow icon' />
+        </Link>
+      </div>
       {error && <p>{error}</p>}
     </form>
   )

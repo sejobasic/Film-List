@@ -33,10 +33,19 @@
 }
 
 /* dark mode */
-
-
 .signup-form.dark label,
 .signup-form.dark span,
 .signup-form.dark h2 {
   color: var(--light-grey)
+}
+
+.arrow-icon {
+  cursor: pointer;
+  width: 30px;
+  filter: invert(45%);
+  transition: 1s ease;
+}
+
+.arrow-icon:hover {
+  transform: scale(1.2);
 }
