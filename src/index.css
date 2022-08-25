@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Prata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Prata&display=swap');
 
 /* --------COLOR STYLE GUIDE-------- */
 :root {
@@ -29,7 +29,8 @@ body {
 h1,
 h2,
 h3,
-p {
+p,
+span {
   margin: 0;
 }
 
@@ -102,14 +103,8 @@ input:focus {
   opacity: 0.7;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.logo {
+  font-size: 1.7em;
+  color: white;
 }
 
-.logo-container img,
-.logo-container h3 {
-  width: 200px;
-  margin-bottom: 200px;
-}

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../../components/footer/Footer'
+import Heading from '../../components/heading/Heading'
 
 // Custom Hooks
 import { useLogin } from '../../hooks/useLogin'
 import { useTheme } from '../../hooks/useTheme'
 
 // Assets
-import logo from '../../assets/logo.png'
 
 // Styling
 import './Login.css'
@@ -27,10 +28,7 @@ function Login() {
   return (
     <>
       <form className={`login-form ${mode}`} onSubmit={handleSubmit}>
-        <div className='logo-container'>
-          <img src={logo} alt='company logo' />
-          <h3>All of your favorite films in one place.</h3>
-        </div>
+        <Heading />
         <h2>Login</h2>
         <label>
           <span>Email:</span>
@@ -69,6 +67,7 @@ function Login() {
         </div>
         {error && <p>{error}</p>}
       </form>
+      <Footer />
     </>
   )
 }

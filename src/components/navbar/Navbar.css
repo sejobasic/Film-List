@@ -11,10 +11,7 @@
   margin: 0 auto;
 }
 
-.logo {
-  width: 200px;
-}
-
+.navbar h2:hover,
 .navbar img:hover {
   opacity: 0.7;
 }
@@ -48,6 +45,7 @@
 
 .logout-container p {
   font-size: 16px;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
@@ -59,6 +57,6 @@
 .search-container {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 

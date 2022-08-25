@@ -1,0 +1,31 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-container p,
+.logo-container h2 {
+  width: 200px;
+  font-size: 2em;
+  color: var(--medium-grey);
+  margin-bottom: 200px;
+}
+
+.logo-container p {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.logo-container span {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.line {
+  border-left: 2px solid var(--medium-grey);
+  height: 100px;
+  left: 50%;
+  margin-left: -3px;
+  margin-bottom: 200px;
+}

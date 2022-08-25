@@ -8,7 +8,6 @@ import { useLogout } from '../../hooks/useLogout'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 // Assets
-import logo from '../../assets/logo.png'
 import logoutIcon from '../../assets/logout-icon.svg'
 import addIcon from '../../assets/add-icon.svg'
 import searchIcon from '../../assets/search-icon.svg'
@@ -28,7 +27,8 @@ function Navbar() {
     <div className='navbar' style={{ background: color }}>
       <nav>
         <Link exact to='/' className='brand'>
-          <img className='logo' src={logo} alt='Film List Logo' />
+          {/* <img className='logo' src={logo} alt='Film List Logo' /> */}
+          <h2 className='logo'>filmlist.</h2>
         </Link>
         {/* Render elements only when user is logged in */}
         {user && (

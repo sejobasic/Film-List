@@ -10,6 +10,8 @@ import arrowIcon from '../../assets/arrow-icon.svg'
 
 // Styling
 import './Signup.css'
+import Heading from '../../components/heading/Heading'
+import Footer from '../../components/footer/Footer'
 
 function Signup() {
   const [email, setEmail] = useState('')
@@ -26,55 +28,59 @@ function Signup() {
   }
 
   return (
-    <form className={`signup-form ${mode}`} onSubmit={handleSubmit}>
-      <h2>Signup</h2>
-      <label>
-        <span>Email:</span>
-        <input
-          type='email'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          required
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          type='password'
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
-      </label>
-      <label>
-        <span>Display Name:</span>
-        <input
-          type='text'
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-          required
-        />
-      </label>
-      <div className='btn-container'>
-        {!loading && (
-          <div>
-          <button style={{ background: color }} className='btn'>
-            Submit
-          </button>
-          </div>
-        )}
-        {/* disable button while waiting for request */}
-        {loading && (
-          <button className='btn disabled' disabled>
-            Loading
-          </button>
-        )}
-        <Link exact to='/login'>
-          <img className='arrow-icon' src={arrowIcon} alt='go back arrow icon' />
-        </Link>
-      </div>
-      {error && <p>{error}</p>}
-    </form>
+    <>
+      <form className={`signup-form ${mode}`} onSubmit={handleSubmit}>
+        <Heading />
+        <h2>Signup</h2>
+        <label>
+          <span>Email:</span>
+          <input
+            type='email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+        </label>
+        <label>
+          <span>Password:</span>
+          <input
+            type='password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+        </label>
+        <label>
+          <span>Display Name:</span>
+          <input
+            type='text'
+            onChange={(e) => setDisplayName(e.target.value)}
+            value={displayName}
+            required
+          />
+        </label>
+        <div className='btn-container'>
+          {!loading && (
+            <div>
+            <button style={{ background: color }} className='btn'>
+              Submit
+            </button>
+            </div>
+          )}
+          {/* disable button while waiting for request */}
+          {loading && (
+            <button className='btn disabled' disabled>
+              Loading
+            </button>
+          )}
+          <Link exact to='/login'>
+            <img className='arrow-icon' src={arrowIcon} alt='go back arrow icon' />
+          </Link>
+        </div>
+        {error && <p>{error}</p>}
+      </form>
+      <Footer />
+    </>
   )
 }
 

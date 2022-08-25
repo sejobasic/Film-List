@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion/dist/framer-motion'
 
 // Assets
-import logo from '../../assets/logo.png'
 import preloader from '../../assets/preloader.svg'
 
 // Styling
@@ -68,7 +67,7 @@ function Loader() {
           animate='visible'
           exit={{ opacity: 0 }}
         >
-          <motion.img
+          {/* <motion.img
             variants={logoVariant}
             initial='hidden'
             animate='visible'
@@ -76,7 +75,15 @@ function Loader() {
             src={logo}
             alt='site branding'
             exit={{ y: -1000 }}
-          />
+          /> */}
+          <motion.h2 
+            variants={logoVariant}
+            initial='hidden'
+            animate='visible'
+            className='logo'
+            exit={{ y: -1000 }}
+          >filmlist.
+          </motion.h2>
           <motion.img
             variants={preloaderVariant}
             initial='hidden'
