@@ -1,6 +1,7 @@
 .searchbar form {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .searchbar input {
@@ -11,4 +12,19 @@
 ::placeholder {
   opacity: 0.5;
   font-size: 17px;
+}
+
+.search-input {
+  width: 200px;
+  border: 1px solid #555;
+  display: block;
+  padding: 9px 4px 9px 40px;
+  background-color: white;
+}
+
+.search-icon {
+  position: absolute;
+  cursor: pointer;
+  filter: invert(40%);
+  padding: 9px 4px 9px 20px;
 }

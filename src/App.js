@@ -64,8 +64,8 @@ function App() {
           >
             {authIsReady && (
               <BrowserRouter>
-                <Navbar />
-                <ThemeSelector />
+              {user && <Navbar />}
+              {user && <ThemeSelector />}
                 <Switch>
                   <Route exact path='/login'>
                     {user && <Redirect to='/' />}

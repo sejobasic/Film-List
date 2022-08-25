@@ -11,6 +11,8 @@ import FilmList from '../../components/film-list/FilmList'
 
 // Styling
 import './Home.css'
+import Navbar from '../../components/navbar/Navbar'
+import ThemeSelector from '../../components/theme-selector/ThemeSelector'
 
 function Home() {
 
@@ -25,15 +27,19 @@ function Home() {
   )
 
   return (
-    <div className='home'>
-      {collectionError && <p className={`error ${mode}`}>{collectionError}</p>}
-      {loading && (
-        <div className='loader-container'>
-          <img className='loading' src={loader} alt='loading...' />
-        </div>
-      )}
-      {documents && <FilmList films={documents} isDeleted={deletedFilm} />}
-    </div>
+    <>
+    {/* <Navbar /> */}
+    {/* <ThemeSelector /> */}
+      <div className='home'>
+        {collectionError && <p className={`error ${mode}`}>{collectionError}</p>}
+        {loading && (
+          <div className='loader-container'>
+            <img className='loading' src={loader} alt='loading...' />
+          </div>
+        )}
+        {documents && <FilmList films={documents} isDeleted={deletedFilm} />}
+      </div>
+    </>
   )
 }
 

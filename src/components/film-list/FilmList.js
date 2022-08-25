@@ -14,19 +14,17 @@ import editIcon from '../../assets/edit-icon.svg'
 // Styling
 import './FilmList.css'
 
-
 function FilmList({ films, isDeleted }) {
   const [addedFilm, setAddedFilm] = useState(null)
   const [updatedFilm, setUpdatedFilm] = useState(null)
 
   // Custom Hooks
-  const { deleteDocument } = useFirestore('films')
   const { user } = useAuthContext()
   const { color, mode } = useTheme()
+  const { deleteDocument } = useFirestore('films')
 
   const location = useLocation()
   const history = useHistory()
-  
 
   const hasRenderedFilms = useRef(false)
   // use effect to track rendered film
@@ -111,6 +109,8 @@ function FilmList({ films, isDeleted }) {
           <img
             className='delete-icon'
             onClick={() => deleteDocument(film.id)}
+            confirm='yes'
+            cancel='no'
             src={deleteIcon}
             alt='delete icon'
           />
@@ -163,11 +163,7 @@ function FilmList({ films, isDeleted }) {
         </div>
       </motion.div>
 
-      <motion.div
-        className='film-list'
-      >
-        {renderFilms}
-      </motion.div>
+      <motion.div className='film-list'>{renderFilms}</motion.div>
     </>
   )
 }

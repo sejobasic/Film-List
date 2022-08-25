@@ -11,11 +11,11 @@ let initialState = {
 const firestoreReducer = (state, action) => {
   switch (action.type) {
     case 'IS_PENDING':
-      return { 
-        isLoading: true, 
-        document: null, 
-        success: false, 
-        error: null 
+      return {
+        isLoading: true,
+        document: null,
+        success: false,
+        error: null,
       }
     case 'ADDED_DOCUMENT':
       return {
@@ -31,13 +31,13 @@ const firestoreReducer = (state, action) => {
         success: true,
         error: null,
       }
-      case 'UPDATED_DOCUMENT':
-        return {
-          isLoading: false,
-          document: action.payload,
-          success: true,
-          error: null,
-        }
+    case 'UPDATED_DOCUMENT':
+      return {
+        isLoading: false,
+        document: action.payload,
+        success: true,
+        error: null,
+      }
     case 'ERROR':
       return {
         isLoading: false,
@@ -84,24 +84,30 @@ export const useFirestore = (collection) => {
     dispatch({ type: 'IS_PENDING' })
 
     try {
-      await ref.doc(id).delete()
-      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
-    }
-    catch(err) {
-      dispatchIfNotCancelled({ type: 'ERROR', payload: 'could not delete film'})
+      if (window.confirm('ARE YOU SURE YOU WANT TO DELETE THIS FILM?')) {
+        await ref.doc(id).delete()
+        dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT' })
+      }
+    } catch (err) {
+      dispatchIfNotCancelled({
+        type: 'ERROR',
+        payload: 'could not delete film',
+      })
     }
   }
 
   //update documents
   const updateDocument = async (id, updates) => {
-    dispatch({ type: 'IS_PENDING'})
+    dispatch({ type: 'IS_PENDING' })
 
     try {
       const updatedDocument = await ref.doc(id).update(updates)
-      dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDocument })
+      dispatchIfNotCancelled({
+        type: 'UPDATED_DOCUMENT',
+        payload: updatedDocument,
+      })
       return updatedDocument
-    }
-    catch(err) {
+    } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message })
       return null
     }

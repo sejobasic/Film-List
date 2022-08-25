@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchBar from '../search-bar/SearchBar'
 import { Link } from 'react-router-dom'
 
@@ -11,11 +11,13 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import logo from '../../assets/logo.png'
 import logoutIcon from '../../assets/logout-icon.svg'
 import addIcon from '../../assets/add-icon.svg'
+import searchIcon from '../../assets/search-icon.svg'
 
 // Styling
 import './Navbar.css'
 
 function Navbar() {
+  const [showSearch, setShowSearch] = useState(true)
 
   // Custom Hooks
   const { color } = useTheme()
@@ -32,18 +34,31 @@ function Navbar() {
         {user && (
           <>
             <div className='search-container'>
-              <SearchBar />
+              {showSearch ? (
+                <img
+                  className='search'
+                  src={searchIcon}
+                  alt='search icon'
+                  onClick={() => setShowSearch(false)}
+                />
+              ) : (
+                <SearchBar search={setShowSearch} />
+              )}
               <Link to='/create?action=create'>
-                <img className='add-film' src={addIcon} alt='icon for adding films' />
+                <img
+                  className='add-film'
+                  src={addIcon}
+                  alt='icon for adding films'
+                />
               </Link>
             </div>
             <div className='logout-container'>
               <p>hello, {user.displayName}</p>
-              <img 
-                className='logout' 
+              <img
+                className='logout'
                 src={logoutIcon}
                 onClick={logout}
-                alt='logout icon' 
+                alt='logout icon'
               />
             </div>
           </>

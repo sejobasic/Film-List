@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Prata&display=swap');
 
 /* --------COLOR STYLE GUIDE-------- */
 :root {
@@ -10,26 +10,37 @@
   --navbar-bg-color: #3d405b;
 }
 
-
 /* GLOBAL STYLES */
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
 body {
-  font-family: Archivo, sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   font-size: 1.4em;
   background: var(--main-bg-color);
   color: var(--main-text-color);
 }
 
-h1,h2,h3,p {
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
-input, textarea {
+h1,
+h2,
+h3 {
+  font-family: 'Prata', serif;
+}
+
+input,
+textarea {
   color: var(--main-text-color);
   padding: 8px;
   font-size: 1em;
@@ -52,9 +63,11 @@ input:focus {
   margin: 10px auto;
   color: var(--dark-grey);
   font-weight: 300;
+  font-size: 3em;
 }
 
-.loading, .error {
+.loading,
+.error {
   text-align: center;
   margin: 60px auto;
 }
@@ -66,8 +79,8 @@ input:focus {
   justify-content: center;
 }
 
-.page-title.dark, 
-.loading.dark, 
+.page-title.dark,
+.loading.dark,
 .error.dark {
   color: #e4e4e4;
 }
@@ -87,4 +100,16 @@ input:focus {
 
 .btn:hover {
   opacity: 0.7;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-container img,
+.logo-container h3 {
+  width: 200px;
+  margin-bottom: 200px;
 }

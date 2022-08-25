@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
 import { useTheme } from '../../hooks/useTheme'
 
+// Assets
+import logo from '../../assets/logo.png'
+
 // Styling
 import './Login.css'
 
@@ -22,45 +25,51 @@ function Login() {
   }
 
   return (
-    <form className={`login-form ${mode}`} onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <label>
-        <span>Email:</span>
-        <input
-          type='email'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          required
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          type='password'
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
-      </label>
-      <div className='btn-container'>
-        {!loading && (
-          <button style={{ background: color }} className='btn'>
-            Login
-          </button>
-        )}
-        {loading && (
-          <button className='btn disabled' disabled>
-            Loading
-          </button>
-        )}
-        <Link exact to='/signup'>
-          <button style={{ background: color }} className='btn'>
-            Signup
-          </button>
-        </Link>
-      </div>
-      {error && <p>{error}</p>}
-    </form>
+    <>
+      <form className={`login-form ${mode}`} onSubmit={handleSubmit}>
+        <div className='logo-container'>
+          <img src={logo} alt='company logo' />
+          <h3>All of your favorite films in one place.</h3>
+        </div>
+        <h2>Login</h2>
+        <label>
+          <span>Email:</span>
+          <input
+            type='email'
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required
+          />
+        </label>
+        <label>
+          <span>Password:</span>
+          <input
+            type='password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+        </label>
+        <div className='btn-container'>
+          {!loading && (
+            <button style={{ background: color }} className='btn'>
+              Login
+            </button>
+          )}
+          {loading && (
+            <button className='btn disabled' disabled>
+              Loading
+            </button>
+          )}
+          <Link exact to='/signup'>
+            <button style={{ background: color }} className='btn'>
+              Signup
+            </button>
+          </Link>
+        </div>
+        {error && <p>{error}</p>}
+      </form>
+    </>
   )
 }
 
