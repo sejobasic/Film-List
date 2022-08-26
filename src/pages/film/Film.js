@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { dataBase } from '../../firebase/config'
+import { motion } from 'framer-motion/dist/framer-motion'
 
 // Custom Hooks
 import { useTheme } from '../../hooks/useTheme'
@@ -12,12 +13,13 @@ import loader from '../../assets/loader.svg'
 import './Film.css'
 
 function Film() {
-  const { id } = useParams()
-  const { color, mode } = useTheme()
-
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
+
+  // Custom Hooks
+  const { id } = useParams()
+  const { color, mode } = useTheme()
 
   // fetch data from firebase
   useEffect(() => {
@@ -43,8 +45,26 @@ function Film() {
     return () => unsub()
   }, [id])
 
+  // animate functions for film div
+  const filmVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
+
   return (
-    <div className={`film ${mode}`}>
+    <motion.div
+      className={`film ${mode}`}
+      variants={filmVariant}
+      initial='hidden'
+      animate='visible'
+    >
       {error && <p className='error'>{error}</p>}
       {loading && (
         <div className='loader-container'>
@@ -65,15 +85,9 @@ function Film() {
             Watch Trailer
           </a>
           <p>{data.description}</p>
-          {/* <img 
-          className='edit-icon' 
-          onClick={() => history.push(`/edit/${id}`)}
-          src={editIcon} 
-          alt='edit icon' 
-        /> */}
         </>
       )}
-    </div>
+    </motion.div>
   )
 }
 

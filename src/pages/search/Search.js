@@ -34,7 +34,10 @@ function Search() {
     collectionRef.get().then((docs) => {
       let docArray = []
       docs.forEach((doc) => {
-        if (doc.data().title.toLowerCase().includes(query.toLowerCase())) {
+        if (
+          doc.data().genre.toLowerCase().includes(query.toLowerCase()) ||
+          doc.data().title.toLowerCase().includes(query.toLowerCase())
+        ) {
           docArray.push({ id: doc.id, ...doc.data() })
         }
       })

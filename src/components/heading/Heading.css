@@ -4,6 +4,10 @@
   gap: 20px;
 }
 
+.logo-container h2 {
+  width: 500px;
+}
+
 .logo-container p,
 .logo-container h2 {
   width: 200px;

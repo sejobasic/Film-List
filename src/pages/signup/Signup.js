@@ -28,7 +28,7 @@ function Signup() {
   }
 
   return (
-    <>
+    <div className='login-container'>
       <form className={`signup-form ${mode}`} onSubmit={handleSubmit}>
         <Heading />
         <h2>Signup</h2>
@@ -80,7 +80,7 @@ function Signup() {
         {error && <p>{error}</p>}
       </form>
       <Footer />
-    </>
+    </div>
   )
 }
 

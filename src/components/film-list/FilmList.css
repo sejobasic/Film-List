@@ -78,6 +78,18 @@
   transition: 1s ease;
 }
 
+.error {
+  margin-top: 200px;
+  width: 400px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.error-message {
+  text-transform: uppercase;
+  color: white;
+}
+
 /* dark mode */
 
 .film-list .card.dark {
@@ -87,7 +99,7 @@
 .film-list .card.dark p,
 .film-list .card.dark h3,
 .film-list .card.dark div {
-  color: var(--secondary-bg-color)
+  color: var(--secondary-bg-color);
 }
 
 .card.dark .delete-icon,
@@ -96,7 +108,9 @@
 }
 
 /* Alert boxes */
-.add-alert-container, .delete-alert-container, .update-alert-container {
+.add-alert-container,
+.delete-alert-container,
+.update-alert-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,18 +120,23 @@
   background-color: rgb(183, 2, 51);
 }
 
-.add-alert, .update-alert {
+.add-alert,
+.update-alert {
   background-color: rgb(36, 156, 107);
 }
 
-.delete-alert, .add-alert, .update-alert{
+.delete-alert,
+.add-alert,
+.update-alert {
   visibility: hidden;
   color: #e4e4e4;
   padding: 20px 40px;
   border-radius: 5px;
 }
 
-.delete-alert.show, .add-alert.show, .update-alert.show{
+.delete-alert.show,
+.add-alert.show,
+.update-alert.show {
   visibility: visible;
 }
 

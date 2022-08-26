@@ -53,7 +53,7 @@ function SearchBar({ search }) {
             animate='visible'
             type='text'
             id='search'
-            placeholder='By Film Title'
+            placeholder='By Title or Genre'
             required
           />
         </form>

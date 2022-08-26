@@ -52,7 +52,11 @@ function FilmList({ films, isDeleted }) {
   }, [location])
 
   if (films.length === 0) {
-    return <div className={`error ${mode}`}>No Films Found</div>
+    return (
+      <div className={`error ${mode}`} style={{ background: color }}>
+        <p className='error-message'>NO FILMS FOUND IN {user.displayName}S LIST PLEASE ADD A FILM</p>
+      </div>
+    )
   }
 
   // animate functions for alert boxes
