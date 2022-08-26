@@ -52,7 +52,6 @@
   color: var(--light-grey);
 }
 
-
 @media only screen and (max-height: 1100px) {
   .login-form {
     padding-bottom: 150px;
@@ -65,9 +64,6 @@
     padding-top: 50px;
     padding-bottom: 180px;
   }
-  /* .login-container {
-    height: 0;
-  } */
 }
 @media only screen and (max-width: 375px) {
   .login-form {

@@ -36,7 +36,7 @@
 /* --MOBILE STYLING-- */
 @media only screen and (max-width: 480px) {
   .link-container img {
-    width: 30px ;
+    width: 30px;
   }
   .footer-container p {
     font-size: 0.5em;

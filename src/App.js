@@ -20,7 +20,6 @@ import { useAuthContext } from './hooks/useAuthContext'
 
 // Styling
 import './App.css'
-import Footer from './components/footer/Footer'
 
 function App() {
   const [loading, setLoading] = useState(false)
