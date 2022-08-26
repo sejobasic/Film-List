@@ -60,3 +60,34 @@
 .film a:hover {
   opacity: 0.8;
 }
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 480px) {
+  .film {
+    margin: 20px auto;
+    max-width: 340px;
+    padding: 20px;
+  }
+
+  .film p {
+    font-size: 0.5em;
+    font-weight: 500;
+  }
+
+  .film h2 {
+    font-size: 1.5em;
+  }
+
+  .film a {
+    width: 100px;
+    font-size: 0.7em;
+  }
+
+  .film img {
+    max-width: 50%;
+  }
+
+  .film-container {
+    height: 90vh;
+  }
+}

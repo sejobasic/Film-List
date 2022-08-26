@@ -59,35 +59,37 @@ function Film() {
   }
 
   return (
-    <motion.div
-      className={`film ${mode}`}
-      variants={filmVariant}
-      initial='hidden'
-      animate='visible'
-    >
-      {error && <p className='error'>{error}</p>}
-      {loading && (
-        <div className='loader-container'>
-          <img className='loading' src={loader} alt='loading...' />
-        </div>
-      )}
-      {data && (
-        <>
-          <h2 className='page-title'>{data.title}</h2>
-          <p>{data.genre}</p>
-          <img src={data.filmImage} alt='poster artwork of film' />
-          <a
-            style={{ background: color }}
-            href={data.link}
-            target='_blank'
-            rel='noreferrer'
-          >
-            Watch Trailer
-          </a>
-          <p>{data.description}</p>
-        </>
-      )}
-    </motion.div>
+    <div className='film-container'>
+      <motion.div
+        className={`film ${mode}`}
+        variants={filmVariant}
+        initial='hidden'
+        animate='visible'
+      >
+        {error && <p className='error'>{error}</p>}
+        {loading && (
+          <div className='loader-container'>
+            <img className='loading' src={loader} alt='loading...' />
+          </div>
+        )}
+        {data && (
+          <>
+            <h2 className='page-title'>{data.title}</h2>
+            <p>{data.genre}</p>
+            <img src={data.filmImage} alt='poster artwork of film' />
+            <a
+              style={{ background: color }}
+              href={data.link}
+              target='_blank'
+              rel='noreferrer'
+            >
+              Watch Trailer
+            </a>
+            <p>{data.description}</p>
+          </>
+        )}
+      </motion.div>
+    </div>
   )
 }
 
