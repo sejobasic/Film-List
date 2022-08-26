@@ -2,7 +2,7 @@
   max-width: 360px;
   margin: auto;
   padding-top: 100px;
-  padding-bottom: 400px;
+  padding-bottom: 300px;
 }
 
 .signup-form label,
@@ -53,6 +53,12 @@
 
 .arrow-icon:hover {
   transform: scale(1.2);
+}
+
+@media only screen and (max-height: 1100px) {
+  .signup-form {
+    padding-bottom: 150px;
+  }
 }
 
 /* --MOBILE STYLING-- */

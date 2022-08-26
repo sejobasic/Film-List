@@ -61,6 +61,12 @@
   opacity: 0.8;
 }
 
+@media only screen and (max-height: 1100px) {
+  .film-container {
+    height: 100vh;
+  }
+}
+
 /* --MOBILE STYLING-- */
 @media only screen and (max-width: 480px) {
   .film {

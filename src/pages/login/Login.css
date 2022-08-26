@@ -10,7 +10,7 @@
   max-width: 360px;
   margin: auto;
   padding-top: 100px;
-  padding-bottom: 500px;
+  padding-bottom: 400px;
 }
 
 .login-form label,
@@ -50,6 +50,13 @@
 .login-form.dark span,
 .login-form.dark h2 {
   color: var(--light-grey);
+}
+
+
+@media only screen and (max-height: 1100px) {
+  .login-form {
+    padding-bottom: 150px;
+  }
 }
 
 /* --MOBILE STYLING-- */
