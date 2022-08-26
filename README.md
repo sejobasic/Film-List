@@ -9,7 +9,7 @@
 
 ## Future Features
 
-### Currently there is no real user auth and thats one of the biggest main features that i am currently working on. Id like users to be able to share their own personal lists with friends and also give access to friends so that they can add their own suggestions to the list. I will also be implementing a "Watched" section which will move any pre existing films that have already been watched by the user. Id like to also add a ratings list with what movies to watch in a specific order by rating. As for UI changes id like to implement a clean carousel instead of film cards and have a set of film stills that go along with each film.
+### Id like users to be able to share their own personal lists with friends via dynamic share links and also give access to friends so that they can add their own suggestions to the list. I will also be implementing a "Watched" section which will move any pre existing films that have already been watched by the user. Id like to also add a ratings list with what movies to watch in a specific order by rating. As for UI changes id like to implement a clean carousel instead of film cards and have a set of film stills that go along with each film.
 
 ## Technologies Used
 
