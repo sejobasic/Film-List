@@ -46,3 +46,9 @@
     width: 150px;
   }
 }
+
+@media only screen and (max-width: 375px) {
+  .footer-container {
+    display: none;
+  }
+}

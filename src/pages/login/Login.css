@@ -65,4 +65,16 @@
     padding-top: 50px;
     padding-bottom: 180px;
   }
+  /* .login-container {
+    height: 0;
+  } */
+}
+@media only screen and (max-width: 375px) {
+  .login-form {
+    padding-top: 50px;
+    padding-bottom: 180px;
+  }
+  .login-container {
+    height: 0;
+  }
 }
