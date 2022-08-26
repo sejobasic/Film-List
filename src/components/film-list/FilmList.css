@@ -154,3 +154,26 @@
 .delete-icon:hover {
   transform: scale(1.2);
 }
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 600px) {
+  .film-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .film-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+  }
+}

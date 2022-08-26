@@ -51,3 +51,11 @@
 .login-form.dark h2 {
   color: var(--light-grey)
 }
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 480px) {
+  .login-form {
+    padding-top: 50px;
+    padding-bottom: 180px;
+  }
+}

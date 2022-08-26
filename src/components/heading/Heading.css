@@ -33,3 +33,20 @@
   margin-left: -3px;
   margin-bottom: 200px;
 }
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 480px) {
+  .logo-container p,
+  .logo-container h2,
+  .line {
+    margin-bottom: 50px;
+  }
+
+  .add-film {
+    margin-right: 12px;
+  }
+
+  .navbar h2 {
+    font-size: 0.8em;
+  }
+}

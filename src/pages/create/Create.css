@@ -36,3 +36,11 @@
 .create.dark span {
   color: #fff;
 }
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 600px) {
+  .create {
+    max-width: 300px;
+    padding-bottom: 20px;
+  }
+}

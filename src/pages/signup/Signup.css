@@ -55,3 +55,11 @@
 .arrow-icon:hover {
   transform: scale(1.2);
 }
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 480px) {
+  .signup-form {
+    padding-top: 50px;
+    padding-bottom: 80px;
+  }
+}

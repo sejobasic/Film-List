@@ -29,7 +29,7 @@
 
 .search {
   cursor: pointer;
-  width:30px;
+  width: 30px;
   filter: invert();
 }
 
@@ -60,3 +60,28 @@
   gap: 10px;
 }
 
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 600px) {
+  .logout-container p {
+    display: none;
+  }
+
+  .add-film {
+    margin-right: 12px;
+  }
+}
+
+/* --MOBILE STYLING-- */
+@media only screen and (max-width: 480px) {
+  .logout-container p {
+    display: none;
+  }
+
+  .add-film {
+    margin-right: 12px;
+  }
+
+  .navbar h2 {
+    font-size: 0.8em;
+  }
+}
