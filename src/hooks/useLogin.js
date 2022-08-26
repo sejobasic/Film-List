@@ -25,8 +25,7 @@ export const useLogin = () => {
         setLoading(false)
         setError(null)
       }
-    }
-    catch(err) {
+    } catch (err) {
       if (!isCancelled) {
         console.log(err.message)
         setError(err.message)
@@ -39,5 +38,5 @@ export const useLogin = () => {
     return () => setIsCancelled(true)
   }, [])
 
-  return { login, error, loading}
+  return { login, error, loading }
 }

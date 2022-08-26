@@ -12,7 +12,6 @@
   color: var(--medium-grey);
 }
 
-
 .signup-form label {
   display: block;
   margin: 30px auto;
@@ -42,7 +41,7 @@
 .signup-form.dark label,
 .signup-form.dark span,
 .signup-form.dark h2 {
-  color: var(--light-grey)
+  color: var(--light-grey);
 }
 
 .arrow-icon {

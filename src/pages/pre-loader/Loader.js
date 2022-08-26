@@ -67,22 +67,14 @@ function Loader() {
           animate='visible'
           exit={{ opacity: 0 }}
         >
-          {/* <motion.img
-            variants={logoVariant}
-            initial='hidden'
-            animate='visible'
-            className='loader-logo'
-            src={logo}
-            alt='site branding'
-            exit={{ y: -1000 }}
-          /> */}
-          <motion.h2 
+          <motion.h2
             variants={logoVariant}
             initial='hidden'
             animate='visible'
             className='logo'
             exit={{ y: -1000 }}
-          >filmlist.
+          >
+            filmlist.
           </motion.h2>
           <motion.img
             variants={preloaderVariant}

@@ -62,9 +62,9 @@ function Signup() {
         <div className='btn-container'>
           {!loading && (
             <div>
-            <button style={{ background: color }} className='btn'>
-              Submit
-            </button>
+              <button style={{ background: color }} className='btn'>
+                Submit
+              </button>
             </div>
           )}
           {/* disable button while waiting for request */}
@@ -74,7 +74,11 @@ function Signup() {
             </button>
           )}
           <Link exact to='/login'>
-            <img className='arrow-icon' src={arrowIcon} alt='go back arrow icon' />
+            <img
+              className='arrow-icon'
+              src={arrowIcon}
+              alt='go back arrow icon'
+            />
           </Link>
         </div>
         {error && <p>{error}</p>}

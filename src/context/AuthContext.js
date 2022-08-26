@@ -14,9 +14,9 @@ export const authReducer = (state, action) => {
     case 'LOGIN':
       return { ...state, user: action.payload }
     case 'LOGOUT':
-      return { ...state, user: null}
+      return { ...state, user: null }
     case 'AUTH_IS_READY':
-      return { ...state, user: action.payload, authIsReady: true}
+      return { ...state, user: action.payload, authIsReady: true }
     default:
       return state
   }
@@ -25,7 +25,7 @@ export const authReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null,
-    authIsReady: false
+    authIsReady: false,
   })
 
   // check when user logs in or out
@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     // communicate with firebase to tell us whenever theres some kind of change in auth status and when there is we want to fire this function
     const unsub = auth.onAuthStateChanged((user) => {
-      dispatch({ type: 'AUTH_IS_READY', payload: user})
+      dispatch({ type: 'AUTH_IS_READY', payload: user })
       unsub()
     })
   }, [])

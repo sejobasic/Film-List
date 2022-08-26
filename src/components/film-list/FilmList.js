@@ -54,7 +54,9 @@ function FilmList({ films, isDeleted }) {
   if (films.length === 0) {
     return (
       <div className={`error ${mode}`} style={{ background: color }}>
-        <p className='error-message'>NO FILMS FOUND IN {user.displayName}S LIST PLEASE ADD A FILM</p>
+        <p className='error-message'>
+          NO FILMS FOUND IN {user.displayName}S LIST PLEASE ADD A FILM
+        </p>
       </div>
     )
   }

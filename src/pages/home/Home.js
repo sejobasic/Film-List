@@ -15,7 +15,6 @@ import Navbar from '../../components/navbar/Navbar'
 import ThemeSelector from '../../components/theme-selector/ThemeSelector'
 
 function Home() {
-
   // Custom Hooks
   const { user } = useAuthContext()
   const { mode } = useTheme()
@@ -28,10 +27,12 @@ function Home() {
 
   return (
     <>
-    {/* <Navbar /> */}
-    {/* <ThemeSelector /> */}
+      {/* <Navbar /> */}
+      {/* <ThemeSelector /> */}
       <div className='home'>
-        {collectionError && <p className={`error ${mode}`}>{collectionError}</p>}
+        {collectionError && (
+          <p className={`error ${mode}`}>{collectionError}</p>
+        )}
         {loading && (
           <div className='loader-container'>
             <img className='loading' src={loader} alt='loading...' />
