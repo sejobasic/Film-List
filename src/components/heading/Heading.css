@@ -13,7 +13,7 @@
   width: 200px;
   font-size: 2em;
   color: var(--medium-grey);
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 .logo-container p {
@@ -31,7 +31,7 @@
   height: 100px;
   left: 50%;
   margin-left: -3px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 
 /* --MOBILE STYLING-- */
