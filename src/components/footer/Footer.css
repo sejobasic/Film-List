@@ -2,12 +2,13 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  padding-bottom: 20px;
+  gap: 10px;
   color: var(--medium-grey);
 }
 
 .footer-container p {
-  font-size: 0.7em;
+  font-size: 0.5em;
   font-weight: 500;
 }
 
@@ -24,7 +25,7 @@
 }
 
 .link-container img {
-  width: 40px;
+  width: 30px;
   filter: invert(45%);
   cursor: pointer;
 }
