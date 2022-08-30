@@ -176,4 +176,7 @@
     margin: 40px auto;
     padding: 30px;
   }
+  .user-list h2 {
+    font-size: 1.2em;
+  }
 }
