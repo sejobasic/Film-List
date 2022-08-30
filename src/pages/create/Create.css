@@ -2,6 +2,7 @@
   color: var(--medium-grey);
   max-width: 480px;
   margin: 60px auto;
+  padding-bottom: 20px;
 }
 
 .create label span {

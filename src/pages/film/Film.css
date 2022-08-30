@@ -1,3 +1,7 @@
+.film-container {
+  padding-bottom: 10px;
+}
+
 .film {
   max-width: 1000px;
   margin: 60px auto;
@@ -59,12 +63,6 @@
 
 .film a:hover {
   opacity: 0.8;
-}
-
-@media only screen and (max-height: 1100px) {
-  .film-container {
-    height: 100vh;
-  }
 }
 
 /* --MOBILE STYLING-- */
