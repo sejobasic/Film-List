@@ -54,7 +54,7 @@
 
 @media only screen and (max-height: 1100px) {
   .login-form {
-    padding-bottom: 150px;
+    padding-bottom: 250px;
   }
 }
 
@@ -71,6 +71,6 @@
     padding-bottom: 180px;
   }
   .login-container {
-    height: 0;
+    padding: 20px;
   }
 }
