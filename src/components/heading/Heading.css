@@ -2,15 +2,11 @@
   display: flex;
   align-items: center;
   gap: 20px;
-}
-
-.logo-container h2 {
-  width: 500px;
+  margin-top: 60px;
 }
 
 .logo-container p,
 .logo-container h2 {
-  width: 200px;
   font-size: 2em;
   color: var(--medium-grey);
   margin-bottom: 100px;
@@ -19,6 +15,7 @@
 .logo-container p {
   font-weight: 400;
   font-size: 1em;
+    width: 200px;
 }
 
 .logo-container span {

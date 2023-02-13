@@ -27,8 +27,8 @@ function Login() {
 
   return (
     <div className='login-container'>
+      <Heading />
       <form className={`login-form ${mode}`} onSubmit={handleSubmit}>
-        <Heading />
         <h2>Login</h2>
         <label>
           <span>Email:</span>
@@ -67,7 +67,7 @@ function Login() {
         </div>
         {error && <p>{error}</p>}
       </form>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }
